@@ -7,45 +7,45 @@
 <meta property="og:title" content="第7章：当好时光不再">
 <meta property="og:description" content="1929年最高点买入需21年回本——但如果持续买入，年化回报超5%。最差的时间买入，最好的策略是继续买。">
 <style>
-  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  :root { --bg:#fdf6ec;--card:#ffffff;--accent:#5b8c9e;--accent2:#d9434e;--gold:#c7851a;--text:#2d2d2d;--muted:#8b7e74;--border:#e8dccf;--green:#2e9e5f; }
   * { margin:0;padding:0;box-sizing:border-box; }
   body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
-  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(255,255,255,.85);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
   .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
   .topnav a:hover { color:#fff; }
   .topnav .chap-indicator { font-size:13px;color:var(--gold); }
   .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
   .ch-header { text-align:center;margin-bottom:32px; }
   .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
-  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#2d2d2d;margin:6px 0 4px; }
   .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
-  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
-  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block { background:linear-gradient(135deg,#fef5e7,#fdf0db);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#2d2d2d;line-height:1.5;margin-bottom:12px; }
   .hook-block .hook-quote::before { content:"💡 "; }
   .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
   .hook-block .hook-why strong { color:var(--accent2); }
   .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
-  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card h3 { font-size:18px;color:#2d2d2d;margin-bottom:6px; }
   .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
   .btn-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px; }
-  .btn { padding:12px 20px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .btn { padding:10px 20px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#2d2d2d;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
   .btn:hover { border-color:var(--accent); }
-  .btn.active { border-color:var(--gold);background:rgba(240,165,0,.15); }
+  .btn.active { border-color:var(--gold);background:rgba(199,133,26,.12); }
   .chart-wrap { margin:24px 0;text-align:center; }
   .chart-wrap canvas { max-width:100%; }
   .result-row { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px; }
   @media (max-width:550px) { .result-row { grid-template-columns:1fr; } }
   .res-card { border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border); }
-  .res-card.sell { background:rgba(233,69,96,.1);border-color:var(--accent2); }
-  .res-card.hold { background:rgba(240,165,0,.1);border-color:var(--gold); }
-  .res-card.dca { background:rgba(46,204,113,.1);border-color:var(--green); }
+  .res-card.sell { background:rgba(217,67,78,.08);border-color:var(--accent2); }
+  .res-card.hold { background:rgba(199,133,26,.08);border-color:var(--gold); }
+  .res-card.dca { background:rgba(46,158,95,.08);border-color:var(--green); }
   .res-card .rl { font-size:12px;color:var(--muted); }
-  .res-card .rv { font-size:20px;font-weight:700;color:#fff;margin-top:4px; }
+  .res-card .rv { font-size:20px;font-weight:700;color:#2d2d2d;margin-top:4px; }
   .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
-  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block h3 { font-size:16px;color:#2d2d2d;margin-bottom:12px; }
   .pq4r-block ul { list-style:none;padding:0; }
-  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
-  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#666; }
+  .ashare-note { background:rgba(0,0,0,.04);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
   .ashare-note strong { color:var(--gold); }
   .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
   .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
@@ -194,9 +194,9 @@
     const vScale = (ph * 0.3) / (maxFinal - initialVal || 1);
 
     const strategies = [
-      { name: '恐慌抛售', val: result.sellFinal, color: '#e94560' },
-      { name: '持有不动', val: result.holdFinal, color: '#f0a500' },
-      { name: '持续定投', val: result.dcaFinal, color: '#2ecc71' },
+      { name: '恐慌抛售', val: result.sellFinal, color: '#d9434e' },
+      { name: '持有不动', val: result.holdFinal, color: '#c7851a' },
+      { name: '持续定投', val: result.dcaFinal, color: '#2e9e5f' },
     ];
 
     const barW = Math.min(50, pw / 8);
@@ -209,7 +209,7 @@
       ctx.globalAlpha = strategy === (i===0?'sell':i===1?'hold':'dca') ? 1 : 0.4;
       ctx.fillRect(x, yPos(prices[prices.length-1]) - barH, barW, Math.max(barH, 10));
       ctx.globalAlpha = 1;
-      ctx.fillStyle = '#fff'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'center';
+      ctx.fillStyle = '#2d2d2d'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'center';
       ctx.fillText(s.name, x + barW/2, yPos(prices[prices.length-1]) + 16);
       ctx.fillText(fmt(s.val), x + barW/2, yPos(prices[prices.length-1]) - barH - 8);
     });
@@ -224,13 +224,13 @@
     for (let y = 0; y <= 12; y+=2) ctx.fillText(y+'年', xPos(y*12), pad.top+ph+18);
 
     // Labels
-    ctx.fillStyle = '#e94560'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillStyle = '#d9434e'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
     ctx.fillText('← 暴跌区', xPos(6), pad.top + 14);
-    ctx.fillStyle = '#2ecc71';
+    ctx.fillStyle = '#2e9e5f';
     ctx.fillText('恢复区 →', xPos(36), pad.top + 14);
 
     // Title
-    ctx.fillStyle = '#fff'; ctx.font = '13px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.fillStyle = '#2d2d2d'; ctx.font = '13px "PingFang SC","Microsoft YaHei",sans-serif';
     ctx.fillText('市场走势（虚线=暴跌区）', pad.left, pad.top - 8);
   }
 

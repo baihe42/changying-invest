@@ -8,15 +8,15 @@
 <meta property="og:description" content="总回报 - 成本 = 净回报。但99%的人选基金时看的是总回报。">
 <style>
   :root {
-    --bg: #1a1a2e;
-    --card: #16213e;
-    --accent: #0f3460;
-    --accent2: #e94560;
-    --gold: #f0a500;
-    --text: #e0e0e0;
-    --muted: #8899aa;
-    --border: #1f3050;
-    --green: #2ecc71;
+    --bg: #fdf6ec;
+    --card: #ffffff;
+    --accent: #5b8c9e;
+    --accent2: #d9434e;
+    --gold: #c7851a;
+    --text: #2d2d2d;
+    --muted: #8b7e74;
+    --border: #e8dccf;
+    --green: #2e9e5f;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -34,7 +34,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
-    background: rgba(15,52,96,.5);
+    background: rgba(255,255,255,.85);
     border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 10;
     backdrop-filter: blur(8px);
@@ -67,7 +67,7 @@
   }
   .ch-header h1 {
     font-size: clamp(22px, 4vw, 30px);
-    color: #fff;
+    color: #2d2d2d;
     margin: 6px 0 4px;
   }
   .ch-header .en-title {
@@ -78,7 +78,7 @@
 
   /* --- Hook Block --- */
   .hook-block {
-    background: linear-gradient(135deg, #1a1030, #201835);
+    background: linear-gradient(135deg, #fef5e7, #fdf0db);
     border-left: 4px solid var(--accent2);
     border-radius: 0 12px 12px 0;
     padding: 24px 28px;
@@ -87,7 +87,7 @@
   .hook-block .hook-quote {
     font-size: 20px;
     font-weight: 700;
-    color: #fff;
+    color: #2d2d2d;
     line-height: 1.5;
     margin-bottom: 12px;
   }
@@ -109,7 +109,7 @@
   }
   .sim-card h3 {
     font-size: 18px;
-    color: #fff;
+    color: #2d2d2d;
     margin-bottom: 6px;
     display: flex; align-items: center; gap: 8px;
   }
@@ -125,7 +125,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: #ccc;
+    color: #666;
     margin-bottom: 6px;
   }
   .ctrl-group label .val {
@@ -164,11 +164,11 @@
     border: 1px solid var(--border);
   }
   .result-card.active {
-    background: rgba(233,69,96,.1);
+    background: rgba(217,67,78,.08);
     border-color: var(--accent2);
   }
   .result-card.index {
-    background: rgba(46,204,113,.1);
+    background: rgba(46,158,95,.08);
     border-color: var(--green);
   }
   .result-card .fund-label {
@@ -179,7 +179,7 @@
   .result-card .fund-amount {
     font-size: 28px;
     font-weight: 700;
-    color: #fff;
+    color: #2d2d2d;
   }
   .result-card.active .fund-amount { color: var(--accent2); }
   .result-card.index .fund-amount { color: var(--green); }
@@ -191,8 +191,8 @@
 
   /* Highlight Box */
   .highlight-box {
-    background: rgba(240,165,0,.1);
-    border: 1px solid rgba(240,165,0,.3);
+    background: rgba(199,133,26,.08);
+    border: 1px solid rgba(199,133,26,.25);
     border-radius: 10px;
     padding: 16px 20px;
     text-align: center;
@@ -227,7 +227,7 @@
     padding: 24px 28px;
     margin-bottom: 24px;
   }
-  .pq4r-block h3 { font-size: 16px; color: #fff; margin-bottom: 12px; }
+  .pq4r-block h3 { font-size: 16px; color: #2d2d2d; margin-bottom: 12px; }
   .pq4r-block ul {
     list-style: none;
     padding: 0;
@@ -236,7 +236,7 @@
     padding: 8px 0;
     border-bottom: 1px solid var(--border);
     font-size: 14px;
-    color: #ccc;
+    color: #666;
   }
   .pq4r-block ul li::before {
     content: attr(data-icon);
@@ -262,7 +262,7 @@
 
   /* --- A-share note --- */
   .ashare-note {
-    background: rgba(15,52,96,.3);
+    background: rgba(0,0,0,.04);
     border-radius: 10px;
     padding: 16px 20px;
     font-size: 13px;
@@ -557,24 +557,24 @@
       ctx.fill();
     }
 
-    drawCurve(dataActive, '#e94560', 'rgba(233,69,96,0.08)');
-    drawCurve(dataIndex, '#2ecc71', 'rgba(46,204,113,0.08)');
+    drawCurve(dataActive, '#d9434e', 'rgba(233,69,96,0.08)');
+    drawCurve(dataIndex, '#2e9e5f', 'rgba(46,204,113,0.08)');
 
     // Legend
     const lx = w - pad.right - 180, ly = pad.top + 6;
-    ctx.fillStyle = '#e94560';
+    ctx.fillStyle = '#d9434e';
     ctx.fillRect(lx, ly, 14, 14);
     ctx.fillStyle = '#ccc';
     ctx.font = '12px "PingFang SC","Microsoft YaHei",sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText('主动基金 (1.5%费)', lx + 20, ly + 12);
 
-    ctx.fillStyle = '#2ecc71';
+    ctx.fillStyle = '#2e9e5f';
     ctx.fillRect(lx, ly + 22, 14, 14);
     ctx.fillText('指数基金 (0.15%费)', lx + 20, ly + 34);
 
     // Title
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = '#2d2d2d';
     ctx.font = '13px "PingFang SC","Microsoft YaHei",sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText('资产增长对比', pad.left, pad.top - 8);

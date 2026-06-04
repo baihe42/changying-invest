@@ -7,50 +7,50 @@
 <meta property="og:title" content="第9章：资产配置">
 <meta property="og:description" content="选哪只股票、什么时候买卖——你花80%精力研究的事，对结果的影响不到10%。">
 <style>
-  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  :root { --bg:#fdf6ec;--card:#ffffff;--accent:#5b8c9e;--accent2:#d9434e;--gold:#c7851a;--text:#2d2d2d;--muted:#8b7e74;--border:#e8dccf;--green:#2e9e5f; }
   * { margin:0;padding:0;box-sizing:border-box; }
   body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
-  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(255,255,255,.85);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
   .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
   .topnav a:hover { color:#fff; }
   .topnav .chap-indicator { font-size:13px;color:var(--gold); }
   .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
   .ch-header { text-align:center;margin-bottom:32px; }
   .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
-  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#2d2d2d;margin:6px 0 4px; }
   .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
-  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
-  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block { background:linear-gradient(135deg,#fef5e7,#fdf0db);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#2d2d2d;line-height:1.5;margin-bottom:12px; }
   .hook-block .hook-quote::before { content:"💡 "; }
   .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
   .hook-block .hook-why strong { color:var(--accent2); }
   .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
-  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card h3 { font-size:18px;color:#2d2d2d;margin-bottom:6px; }
   .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
   .pie-row { display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;margin-bottom:24px; }
   .chart-wrap { text-align:center; }
   .chart-wrap canvas { max-width:100%; }
   .sliders-col { flex:1;min-width:240px; }
   .ctrl-group { margin-bottom:14px; }
-  .ctrl-group label { display:flex;justify-content:space-between;font-size:14px;color:#ccc;margin-bottom:4px; }
+  .ctrl-group label { display:flex;justify-content:space-between;font-size:14px;color:#666;margin-bottom:4px; }
   .ctrl-group label .val { color:var(--gold);font-weight:700; }
   input[type=range] { -webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--border);outline:none;margin:0; }
   input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent2);cursor:pointer;border:2px solid #fff; }
   .stats-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px; }
   @media (max-width:550px) { .stats-grid { grid-template-columns:1fr; } }
-  .stat-card { border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);background:rgba(15,52,96,.2); }
+  .stat-card { border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);background:rgba(0,0,0,.03); }
   .stat-card .sl { font-size:12px;color:var(--muted); }
-  .stat-card .sv { font-size:20px;font-weight:700;color:#fff;margin-top:4px; }
+  .stat-card .sv { font-size:20px;font-weight:700;color:#2d2d2d;margin-top:4px; }
   .presets { display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px; }
   .presets button { padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s; }
   .presets button:hover { border-color:var(--accent);color:#fff; }
   .presets button.active { background:var(--accent);border-color:var(--accent);color:#fff; }
   .fee-note { font-size:12px;color:var(--muted);text-align:center;margin-top:8px; }
   .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
-  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block h3 { font-size:16px;color:#2d2d2d;margin-bottom:12px; }
   .pq4r-block ul { list-style:none;padding:0; }
-  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
-  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#666; }
+  .ashare-note { background:rgba(0,0,0,.04);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
   .ashare-note strong { color:var(--gold); }
   .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
   .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
@@ -109,9 +109,9 @@
   </div>
 
   <div class="stats-grid">
-    <div class="stat-card"><div class="sl">预期年化收益</div><div class="sv" id="s-return" style="color:#2ecc71">--</div></div>
-    <div class="stat-card"><div class="sl">年化波动率</div><div class="sv" id="s-vol" style="color:#f0a500">--</div></div>
-    <div class="stat-card"><div class="sl">最差年份估算</div><div class="sv" id="s-worst" style="color:#e94560">--</div></div>
+    <div class="stat-card"><div class="sl">预期年化收益</div><div class="sv" id="s-return" style="color:#2e9e5f">--</div></div>
+    <div class="stat-card"><div class="sl">年化波动率</div><div class="sv" id="s-vol" style="color:#c7851a">--</div></div>
+    <div class="stat-card"><div class="sl">最差年份估算</div><div class="sv" id="s-worst" style="color:#d9434e">--</div></div>
   </div>
   <p class="fee-note">说明：以上数据基于美股历史长期平均值的粗略估算，用于示意性教学，不构成投资建议。</p>
 </div>
@@ -165,9 +165,9 @@
     ctx.clearRect(0,0,size,size);
 
     const slices = [
-      { pct: s, color: '#e94560', label: '股票' },
+      { pct: s, color: '#d9434e', label: '股票' },
       { pct: b, color: '#3498db', label: '债券' },
-      { pct: c, color: '#f0a500', label: '现金' },
+      { pct: c, color: '#c7851a', label: '现金' },
     ].filter(sl => sl.pct > 0);
 
     let angle = -Math.PI/2;
@@ -184,7 +184,7 @@
       const midAngle = angle + sweep / 2;
       const lx = cx + Math.cos(midAngle) * r * 0.65;
       const ly = cy + Math.sin(midAngle) * r * 0.65;
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle = '#2d2d2d';
       ctx.font = 'bold 13px "PingFang SC","Microsoft YaHei",sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(sl.pct + '%', lx, ly - 6);

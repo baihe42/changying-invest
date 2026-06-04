@@ -7,32 +7,32 @@
 <meta property="og:title" content="第5章：聚焦最低成本">
 <meta property="og:description" content="股市里最便宜的产品长期反而是最好的——不是促销广告，是数学。">
 <style>
-  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  :root { --bg:#fdf6ec;--card:#ffffff;--accent:#5b8c9e;--accent2:#d9434e;--gold:#c7851a;--text:#2d2d2d;--muted:#8b7e74;--border:#e8dccf;--green:#2e9e5f; }
   * { margin:0;padding:0;box-sizing:border-box; }
   body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
-  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(255,255,255,.85);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
   .topnav a { color:var(--muted);text-decoration:none;font-size:13px;transition:color .15s; }
   .topnav a:hover { color:#fff; }
   .topnav .chap-indicator { font-size:13px;color:var(--gold); }
   .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
   .ch-header { text-align:center;margin-bottom:32px; }
   .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
-  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#2d2d2d;margin:6px 0 4px; }
   .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
-  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
-  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block { background:linear-gradient(135deg,#fef5e7,#fdf0db);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#2d2d2d;line-height:1.5;margin-bottom:12px; }
   .hook-block .hook-quote::before { content:"💡 "; }
   .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
   .hook-block .hook-why strong { color:var(--accent2); }
   .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
-  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card h3 { font-size:18px;color:#2d2d2d;margin-bottom:6px; }
   .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
   .fund-row { display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:24px; }
   .fund-card { background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:all .15s;user-select:none; }
   .fund-card:hover { border-color:var(--accent); }
-  .fund-card.selected-a { border-color:var(--accent2);background:rgba(233,69,96,.1); }
-  .fund-card.selected-b { border-color:var(--green);background:rgba(46,204,113,.1); }
-  .fund-card .fc-fee { font-size:22px;font-weight:700;color:#fff; }
+  .fund-card.selected-a { border-color:var(--accent2);background:rgba(217,67,78,.08); }
+  .fund-card.selected-b { border-color:var(--green);background:rgba(46,158,95,.08); }
+  .fund-card .fc-fee { font-size:22px;font-weight:700;color:#2d2d2d; }
   .fund-card .fc-name { font-size:12px;color:var(--muted);margin-top:4px; }
   .instruction { text-align:center;font-size:13px;color:var(--muted);margin-bottom:16px; }
   .chart-wrap { margin:24px 0;text-align:center; }
@@ -40,18 +40,18 @@
   .battle-result { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px; }
   @media (max-width:500px) { .battle-result { grid-template-columns:1fr; } }
   .battle-card { border-radius:12px;padding:16px;text-align:center;border:1px solid var(--border); }
-  .battle-card.a { background:rgba(233,69,96,.1);border-color:var(--accent2); }
-  .battle-card.b { background:rgba(46,204,113,.1);border-color:var(--green); }
+  .battle-card.a { background:rgba(217,67,78,.08);border-color:var(--accent2); }
+  .battle-card.b { background:rgba(46,158,95,.08);border-color:var(--green); }
   .battle-card .bl { font-size:12px;color:var(--muted); }
-  .battle-card .bv { font-size:22px;font-weight:700;color:#fff;margin-top:4px; }
+  .battle-card .bv { font-size:22px;font-weight:700;color:#2d2d2d;margin-top:4px; }
   .battle-card .bvd { font-size:12px;color:var(--muted);margin-top:2px; }
   .winner-tag { display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;margin-top:6px; }
   .winner-tag.win { background:rgba(46,204,113,.2);color:var(--green); }
   .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
-  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block h3 { font-size:16px;color:#2d2d2d;margin-bottom:12px; }
   .pq4r-block ul { list-style:none;padding:0; }
-  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
-  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#666; }
+  .ashare-note { background:rgba(0,0,0,.04);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
   .ashare-note strong { color:var(--gold); }
   .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
   .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
@@ -132,8 +132,8 @@
   const ctx = canvas.getContext('2d');
 
   const FUNDS = [
-    { name: '沪深300 ETF', fee: 0.0015, color: '#2ecc71', tag: '指数' },
-    { name: '某明星主动基金', fee: 0.015, color: '#e94560', tag: '主动' },
+    { name: '沪深300 ETF', fee: 0.0015, color: '#2e9e5f', tag: '指数' },
+    { name: '某明星主动基金', fee: 0.015, color: '#d9434e', tag: '主动' },
     { name: '某量化基金', fee: 0.02, color: '#e74c3c', tag: '量化' },
     { name: '某FoF组合', fee: 0.025, color: '#c0392b', tag: 'FoF' },
     { name: '标普500 ETF', fee: 0.0003, color: '#27ae60', tag: '指数' },
