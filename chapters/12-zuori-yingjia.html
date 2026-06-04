@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第12章：昨日赢家，明日输家 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第12章：昨日赢家，明日输家">
+<meta property="og:description" content="去年的冠军基金不是明年的候选，而是最佳避雷指南。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted); }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .shuffle-area { position:relative;height:340px;overflow:hidden;margin:16px 0;border:1px solid var(--border);border-radius:12px;background:rgba(0,0,0,.2); }
+  .dot { position:absolute;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700;transition:all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+  .dot.champion { width:50px;height:50px;font-size:13px;border:3px solid var(--gold);z-index:5; }
+  .legend-row { display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-size:12px;color:var(--muted); }
+  .legend-dot { display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle; }
+  .btn-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap; }
+  .btn { padding:10px 20px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .btn:hover { border-color:var(--accent); }
+  .btn.primary { border-color:var(--accent2);background:rgba(233,69,96,.15); }
+  .round-info { text-align:center;font-size:14px;color:var(--muted);margin:12px 0; }
+  .insight-box { background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.3);border-radius:10px;padding:16px 20px;text-align:center;margin-top:16px;font-size:14px;color:var(--gold);display:none; }
+  .insight-box.show { display:block; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 12 章 / 20</span>
+  <a href="13-junzhi-huigui.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART III · CHAPTER 12</div>
+  <h1>昨日赢家，明日输家</h1>
+  <div class="en-title">Yesterday's Winners, Tomorrow's Losers</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">去年的冠军基金，不是明年的候选——而是最佳避雷指南。热手效应让投资者天然以为"连续好=能力强"，但冠军的辉煌往往只是因为押中了去年的风口。风一停，冠军就变成输家。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 人类大脑天生寻找模式——我们看到"连续三年排名前三"，就会自动推断"这个经理有超能力"。但博格和无数研究证明：<strong>基金排名的持续性几乎为零</strong>。除了那些表现持续最差的（被高成本拖累），没有一个基金能稳定地留在前列。</div>
+</div>
+
+<div class="sim-card" id="sim-shuffle">
+  <h3>🎮 排行震荡剧场</h3>
+  <p class="sim-desc">20个基金经理，每年排名重新洗牌。🏆金圈是去年的冠军——点"快进一年"，看他去哪了。多玩几轮，看有没有人能连续留在前列。</p>
+
+  <div class="legend-row">
+    <span><span class="legend-dot" style="background:#f0a500;"></span> 上轮冠军</span>
+    <span><span class="legend-dot" style="background:#e94560;"></span> 前5名</span>
+    <span><span class="legend-dot" style="background:#3498db;"></span> 6-15名</span>
+    <span><span class="legend-dot" style="background:#556;"></span> 16-20名</span>
+  </div>
+
+  <div class="shuffle-area" id="shuffle-area"></div>
+
+  <div class="btn-row">
+    <button class="btn primary" id="btn-shuffle">🔄 快进一年，重新排名</button>
+    <button class="btn" id="btn-reset">🔁 重置</button>
+  </div>
+  <div class="round-info">第 <span id="round-num">1</span> 轮排名</div>
+
+  <div class="insight-box" id="continuous-insight">
+    💡 已经过了好几轮了。有没有哪个经理一直留在前5？大概率没有。这就是博格说的：排名是随机的——<strong>只有成本是确定的。</strong>
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>"热手效应"如何误导基金投资者？</li>
+    <li>❓ <strong>Question：</strong>你有没有看过"年度冠军基金"在接下来几年的表现？去查一下，很震撼。</li>
+    <li>🪞 <strong>Reflect：</strong>如果排名随机，为什么还有那么多人花时间研究排名？</li>
+    <li>🗣️ <strong>Recite：</strong>"买去年的冠军基金，就像押注抛硬币连续正面——之前的结果对下一次没有任何预测力。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>回顾A股历年冠军基金：2019年冠军是科技主题，2020年是消费/医药，2021年是新能源——每年冠军都不同。买冠军基金的投资者，大概率买在了风格顶点，承受了接下来两年的回撤。
+</div>
+
+<div class="bottomnav">
+  <a href="11-xuanze-yingjia.html">← 第11章：选择长期赢家</a>
+  <a href="13-junzhi-huigui.html">第13章：均值回归 →</a>
+</nav>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const area = $('shuffle-area');
+  const N = 20;
+  const COLORS = ['#e74c3c','#e94560','#c0392b','#e67e22','#f39c12',
+                  '#3498db','#2980b9','#1abc9c','#2ecc71','#27ae60',
+                  '#9b59b6','#8e44ad','#34495e','#f1c40f','#e91e63',
+                  '#00bcd4','#ff5722','#795548','#607d8b','#4caf50'];
+  let round = 1;
+  let rankings = [];
+  let prevChampion = -1;
+  let consecutiveTop5 = {};
+
+  function shuffle() {
+    const ids = Array.from({length:N}, (_,i) => i);
+    for (let i = ids.length-1; i > 0; i--) {
+      const j = Math.floor(Math.random()*(i+1));
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
+    return ids;
+  }
+
+  function renderDots() {
+    area.innerHTML = '';
+    const aw = area.clientWidth, ah = area.clientHeight;
+    const padding = 30;
+    const usableW = aw - padding*2, usableH = ah - padding*2;
+
+    rankings.forEach((id, rank) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      if (prevChampion >= 0 && id === prevChampion) {
+        dot.classList.add('champion');
+      }
+
+      // Position based on rank: grid-like but with randomness
+      const col = rank % 5;
+      const row = Math.floor(rank / 5);
+      const jitterX = (Math.random() - 0.5) * 30;
+      const jitterY = (Math.random() - 0.5) * 20;
+      const x = padding + (col / 4) * usableW + jitterX;
+      const y = padding + (row / 3) * usableH + jitterY;
+
+      dot.style.left = x + 'px';
+      dot.style.top = y + 'px';
+
+      // Color based on rank
+      if (rank < 5) dot.style.background = '#e94560';
+      else if (rank < 15) dot.style.background = '#3498db';
+      else dot.style.background = '#556';
+
+      dot.textContent = id + 1;
+      dot.title = '经理 #' + (id+1) + ' (排名 #' + (rank+1) + ')';
+      area.appendChild(dot);
+    });
+  }
+
+  function doShuffle() {
+    round++;
+    $('round-num').textContent = round;
+
+    // Track previous champion
+    prevChampion = rankings[0];
+
+    // Track consecutive top 5
+    rankings.slice(0, 5).forEach(id => {
+      consecutiveTop5[id] = (consecutiveTop5[id] || 0) + 1;
+    });
+
+    rankings = shuffle();
+    renderDots();
+
+    if (round >= 4) {
+      const maxConsecutive = Math.max(...Object.values(consecutiveTop5), 0);
+      if (maxConsecutive <= 2) {
+        $('continuous-insight').classList.add('show');
+      }
+    }
+  }
+
+  function reset() {
+    round = 1;
+    prevChampion = -1;
+    consecutiveTop5 = {};
+    rankings = shuffle();
+    $('round-num').textContent = '1';
+    $('continuous-insight').classList.remove('show');
+    renderDots();
+  }
+
+  $('btn-shuffle').addEventListener('click', doShuffle);
+  $('btn-reset').addEventListener('click', reset);
+
+  window.addEventListener('resize', renderDots);
+  reset();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3章：股票如何为投资者赚取回报 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第3章：股票如何为投资者赚取回报">
+<meta property="og:description" content="股票回报只有两个来源：股息和盈利增长。估值变化是零和博弈。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px;transition:color .15s; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ctrl-group { margin-bottom:20px; }
+  .ctrl-group label { display:flex;justify-content:space-between;font-size:14px;color:#ccc;margin-bottom:6px; }
+  .ctrl-group label .val { color:var(--gold);font-weight:700; }
+  input[type=range] { -webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--border);outline:none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent2);cursor:pointer;border:2px solid #fff; }
+  .chart-wrap { margin:24px 0;text-align:center; }
+  .chart-wrap canvas { max-width:100%; }
+  .formula-box { background:#0a0a1e;border:2px solid var(--border);border-radius:12px;padding:20px 24px;text-align:center;margin:20px 0; }
+  .formula-box .formula { font-size:20px;color:#fff;font-weight:700;font-family:"Courier New",monospace; }
+  .formula-box .formula .green { color:var(--green); }
+  .formula-box .formula .red { color:var(--accent2); }
+  .formula-box .formula .gold { color:var(--gold); }
+  .warning { background:rgba(233,69,96,.1);border:1px solid var(--accent2);border-radius:10px;padding:14px 18px;margin-top:16px;font-size:13px;color:var(--accent2);display:none;text-align:center; }
+  .warning.show { display:block; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 3 章 / 20</span>
+  <a href="04-chengben.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART I · CHAPTER 3</div>
+  <h1>股票如何为投资者赚取回报</h1>
+  <div class="en-title">How Stocks Earn Returns for Investors</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">股票回报只有两个真正的来源：股息率和企业盈利增长。第三个来源——"估值变化"——是零和博弈。你赚的每一分估值钱，都是另一个投资者亏掉的。这不是观点，是算术恒等式。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 大多数人把"炒股"等同于"低买高卖"（赚估值变化的钱）。但博格指出：<strong>真正创造财富的是企业盈利增长和分红，而不是互相掏口袋。</strong>从"所有投资者整体"视角看，扣费前的总回报 = 市场回报。有人跑赢，就必定有人跑输。超额收益不是凭空产生的——你多赚的，是别人少赚的。</div>
+</div>
+
+<div class="sim-card" id="sim-decompose">
+  <h3>🎮 回报拆解器</h3>
+  <p class="sim-desc">拖动滑块，看看一只股票/指数的总回报是由哪些部分构成的。</p>
+
+  <div class="ctrl-group">
+    <label>股息率 <span class="val" id="div-val">2.5%</span></label>
+    <input type="range" id="dividend" min="0" max="6" value="2.5" step="0.1">
+  </div>
+  <div class="ctrl-group">
+    <label>企业盈利增长 <span class="val" id="growth-val">5.0%</span></label>
+    <input type="range" id="earningsGrowth" min="0" max="12" value="5" step="0.1">
+  </div>
+  <div class="ctrl-group">
+    <label>估值变化（市盈率扩张/收缩）<span class="val" id="pe-val">0.0%</span></label>
+    <input type="range" id="peChange" min="-5" max="5" value="0" step="0.1">
+  </div>
+
+  <div class="formula-box">
+    <div class="formula">
+      总回报 = <span class="green" id="f-div">2.5%</span> + <span class="green" id="f-growth">5.0%</span> + <span class="red" id="f-pe">0.0%</span> = <span class="gold" id="f-total">7.5%</span>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="decomposeChart" width="700" height="260"></canvas>
+  </div>
+
+  <div class="warning" id="pe-warning">
+    ⚠️ 注意：估值变化 ≠ 0 时，你的收益来自（或流向了）其他投资者。<br>全体投资者作为一个整体，估值变化的净值为零。这是算术恒等式，不是预测。
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>博格为什么说"从所有投资者整体看问题"是关键？这个视角转换意味着什么？</li>
+    <li>❓ <strong>Question：</strong>你过去的投资回报中，多少来自企业成长（股息+盈利增长），多少来自估值变化？</li>
+    <li>🪞 <strong>Reflect：</strong>"趁PE低买入、PE高卖出"——这个策略的前提是有人愿意在PE高时接盘。那个接盘的人凭什么不是你？</li>
+    <li>🗣️ <strong>Recite：</strong>向朋友解释：为什么"炒股赚估值变化的钱"本质上是"比别人更聪明地猜测别人什么时候愿意出更高价"。</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>沪深300的长期股息率约2-3%，盈利增长约6-8%。A股估值的剧烈波动（PE从8到30再回8）让"估值变化"在A股显得特别重要——但博格的恒等式不变：你赚的估值钱是别人亏的。A股80%散户的存在，意味着估值博弈的对手盘中有大量非理性参与者。
+</div>
+
+<div class="bottomnav">
+  <a href="02-lixing-fanrong.html">← 第2章：理性繁荣</a>
+  <a href="04-chengben.html">第4章：成本——投资回报的算术 →</a>
+</div>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('decomposeChart');
+  const ctx = canvas.getContext('2d');
+
+  function update() {
+    const div = parseFloat($('dividend').value);
+    const growth = parseFloat($('earningsGrowth').value);
+    const pe = parseFloat($('peChange').value);
+    const total = div + growth + pe;
+
+    $('div-val').textContent = div.toFixed(1) + '%';
+    $('growth-val').textContent = growth.toFixed(1) + '%';
+    $('pe-val').textContent = (pe >= 0 ? '+' : '') + pe.toFixed(1) + '%';
+
+    $('f-div').textContent = div.toFixed(1) + '%';
+    $('f-growth').textContent = growth.toFixed(1) + '%';
+    $('f-pe').textContent = (pe >= 0 ? '+' : '') + pe.toFixed(1) + '%';
+    $('f-total').textContent = (total >= 0 ? '+' : '') + total.toFixed(1) + '%';
+
+    const warning = $('pe-warning');
+    if (Math.abs(pe) > 0.05) {
+      warning.classList.add('show');
+      warning.textContent = pe > 0
+        ? '⚠️ 估值扩张贡献了 +' + pe.toFixed(1) + '%——这笔收益来自其他投资者支付了更高的PE。全体投资者作为一个整体，估值的净贡献为零。'
+        : '⚠️ 估值收缩吞噬了 ' + pe.toFixed(1) + '%——你亏的这笔钱，是之前PE高时买入的投资者替你付的。';
+    } else {
+      warning.classList.remove('show');
+    }
+
+    drawChart(div, growth, pe, total);
+  }
+
+  function drawChart(div, growth, pe, total) {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth;
+    const h = 260;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const barW = Math.min(60, (w - 100) / 5);
+    const gap = barW * 0.6;
+    const startX = w/2 - (barW*3 + gap*2)/2;
+    const baseY = h - 40;
+    const maxH = h - 90;
+
+    const items = [
+      { label: '股息', val: div, color: '#2ecc71' },
+      { label: '盈利增长', val: growth, color: '#3498db' },
+      { label: '估值变化', val: pe, color: pe >= 0 ? '#e94560' : '#e74c3c' },
+    ];
+
+    const maxAbs = Math.max(Math.abs(div), Math.abs(growth), Math.abs(pe), 0.5);
+    const scale = maxH / maxAbs / 2;
+
+    // Zero line
+    const zeroY = baseY;
+    ctx.strokeStyle = '#8899aa'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(30, zeroY); ctx.lineTo(w-30, zeroY); ctx.stroke();
+
+    for (let i = 0; i < items.length; i++) {
+      const x = startX + i * (barW + gap);
+      const hBar = Math.abs(items[i].val) * scale;
+      const y = items[i].val >= 0 ? zeroY - hBar : zeroY;
+
+      ctx.fillStyle = items[i].color;
+      ctx.fillRect(x, y, barW, Math.max(hBar, 2));
+
+      // value label
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 14px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.textAlign = 'center';
+      const labelY = items[i].val >= 0 ? y - 10 : y + hBar + 18;
+      ctx.fillText((items[i].val >= 0 ? '+' : '') + items[i].val.toFixed(1) + '%', x + barW/2, labelY);
+
+      // name label
+      ctx.fillStyle = '#ccc';
+      ctx.font = '12px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.fillText(items[i].label, x + barW/2, baseY + 18);
+    }
+
+    // Total indicator
+    ctx.fillStyle = '#f0a500';
+    ctx.font = 'bold 15px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('总回报 = ' + (total >= 0 ? '+' : '') + total.toFixed(1) + '%', w/2, 28);
+  }
+
+  [$('dividend'), $('earningsGrowth'), $('peChange')].forEach(el => {
+    el.addEventListener('input', update);
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

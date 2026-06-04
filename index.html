@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《长赢投资》同伴手册 · 约翰·博格</title>
+<meta property="og:title" content="《长赢投资》同伴手册">
+<meta property="og:description" content="每章一个反预期Hook + 一个互动模拟器，让博格的智慧活起来。">
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --card: #16213e;
+    --accent: #0f3460;
+    --accent2: #e94560;
+    --gold: #f0a500;
+    --text: #e0e0e0;
+    --muted: #8899aa;
+    --border: #1f3050;
+    --green: #2ecc71;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, #0f3460 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .book-icon { font-size: 56px; margin-bottom: 12px; }
+  .hero h1 {
+    font-size: clamp(24px, 5vw, 40px);
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 16px;
+  }
+  .hero .badge-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .badge {
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  /* --- Layout --- */
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+  /* --- Section Header --- */
+  .part-header {
+    margin: 40px 0 16px;
+    padding-left: 14px;
+    border-left: 4px solid var(--accent2);
+  }
+  .part-header .part-num {
+    font-size: 12px;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .part-header h2 {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  /* --- Chapter Grid --- */
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .ch-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform .15s, border-color .15s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .ch-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .ch-card .ch-num {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .ch-card .ch-title {
+    font-size: 17px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .ch-card .ch-hook {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ch-card .ch-sim {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    background: rgba(233,69,96,.15);
+    color: var(--accent2);
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  .ch-card.coming-soon {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  /* --- Footer --- */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .footer a { color: var(--gold); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 16px 28px; }
+    .chapter-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="book-icon">📘</div>
+  <h1>《长赢投资》同伴手册</h1>
+  <p class="subtitle">约翰·博格用一本书讲了一个道理：成本越低，回报越高。<br>这份同伴手册，用 20 个反预期Hook + 20 个互动模拟器，让道理活起来。</p>
+  <div class="badge-row">
+    <span class="badge">💡 反预期Hook</span>
+    <span class="badge">🎮 互动模拟器</span>
+    <span class="badge">📖 PQ4R阅读</span>
+    <span class="badge">🇨🇳 A股视角</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ===== PART I: 理念基石 ===== -->
+<div class="part-header">
+  <div class="part-num">Part I</div>
+  <h2>板块一 · 理念基石（第1–3章）</h2>
+</div>
+
+<div class="chapter-grid">
+  <a class="ch-card" href="chapters/01-yugu.html">
+    <div class="ch-num">第 1 章</div>
+    <div class="ch-title">戈特罗克家族寓言</div>
+    <div class="ch-hook">一个家族拥有整个股市，他们越交易越穷——这不是寓言，是所有投资者的集体困境。</div>
+    <span class="ch-sim">🎮 家族财富腐蚀机</span>
+  </a>
+  <a class="ch-card" href="chapters/02-lixing-fanrong.html">
+    <div class="ch-num">第 2 章</div>
+    <div class="ch-title">理性繁荣</div>
+    <div class="ch-hook">格林斯潘说"非理性繁荣"后市场又涨了4年——真正理性的人要承受4年嘲笑。</div>
+    <span class="ch-sim">🎮 泡沫买入回本计算器</span>
+  </a>
+  <a class="ch-card" href="chapters/03-gupiao-huibao.html">
+    <div class="ch-num">第 3 章</div>
+    <div class="ch-title">股票如何为投资者赚取回报</div>
+    <div class="ch-hook">股票回报只有两个来源：股息和盈利增长。估值变化是零和博弈——你赚的每一分都是别人亏的。</div>
+    <span class="ch-sim">🎮 回报拆解器</span>
+  </a>
+</div>
+
+<!-- ===== PART II: 成本的杀伤力 ===== -->
+<div class="part-header">
+  <div class="part-num">Part II</div>
+  <h2>板块二 · 成本的杀伤力（第4–9章）</h2>
+</div>
+
+<div class="chapter-grid">
+  <a class="ch-card" href="chapters/04-chengben.html">
+    <div class="ch-num">第 4 章</div>
+    <div class="ch-title">成本——投资回报的算术</div>
+    <div class="ch-hook">总回报 - 成本 = 净回报。简单到不能更简单——但99%的人选基金时看的是总回报。</div>
+    <span class="ch-sim">🎮 成本复利吞噬机</span>
+  </a>
+  <a class="ch-card" href="chapters/05-dichengben.html">
+    <div class="ch-num">第 5 章</div>
+    <div class="ch-title">聚焦最低成本</div>
+    <div class="ch-hook">股市里最便宜的产品长期反而是最好的——不是促销广告，是数学。</div>
+    <span class="ch-sim">🎮 费用军备竞赛</span>
+  </a>
+  <a class="ch-card" href="chapters/06-shuishou.html">
+    <div class="ch-num">第 6 章</div>
+    <div class="ch-title">税收也是成本</div>
+    <div class="ch-hook">税务局是你最大的"合伙投资人"——频繁交易的基金把1-3%的收益交了税。</div>
+    <span class="ch-sim">🎮 税后真相计算器</span>
+  </a>
+  <a class="ch-card" href="chapters/07-haoshiguang.html">
+    <div class="ch-num">第 7 章</div>
+    <div class="ch-title">当好时光不再</div>
+    <div class="ch-hook">1929年最高点买入需21年回本——但如果持续买入，年化回报超5%。最差的时间买入，最好的策略是继续买。</div>
+    <span class="ch-sim">🎮 熊市穿越模拟器</span>
+  </a>
+  <a class="ch-card" href="chapters/08-zhaiquan.html">
+    <div class="ch-num">第 8 章</div>
+    <div class="ch-title">选择合理的债券基金</div>
+    <div class="ch-hook">年轻人不需要债券？错。债券不是为了赚钱，是让你在暴跌时不恐慌抛售。</div>
+    <span class="ch-sim">🎮 股债配比探索器</span>
+  </a>
+  <a class="ch-card" href="chapters/09-zichan-peizhi.html">
+    <div class="ch-num">第 9 章</div>
+    <div class="ch-title">资产配置</div>
+    <div class="ch-hook">选哪只股票、什么时候买卖——你花80%精力研究的事，对结果的影响不到10%。</div>
+    <span class="ch-sim">🎮 资产配置决策器</span>
+  </a>
+</div>
+
+<!-- ===== PART III: 主动管理的失败 ===== -->
+<div class="part-header">
+  <div class="part-num">Part III</div>
+  <h2>板块三 · 主动管理的失败（第10–13章）</h2>
+</div>
+
+<div class="chapter-grid">
+  <a class="ch-card" href="chapters/10-zhongxing-quxian.html">
+    <div class="ch-num">第 10 章</div>
+    <div class="ch-title">钟形曲线的右侧</div>
+    <div class="ch-hook">你千挑万选的基金经理，96%的概率10年后跑输大盘。但基金公司不会告诉你。</div>
+    <span class="ch-sim">🎮 基金经理大转盘</span>
+  </a>
+  <a class="ch-card" href="chapters/11-xuanze-yingjia.html">
+    <div class="ch-num">第 11 章</div>
+    <div class="ch-title">选择长期赢家</div>
+    <div class="ch-hook">过去5年最好的基金经理，未来5年最差的概率远大于继续最好的概率。</div>
+    <span class="ch-sim">🎮 冠军魔咒揭秘器</span>
+  </a>
+  <a class="ch-card" href="chapters/12-zuori-yingjia.html">
+    <div class="ch-num">第 12 章</div>
+    <div class="ch-title">昨日赢家，明日输家</div>
+    <div class="ch-hook">去年的冠军基金不是明年的候选，而是最佳避雷指南。</div>
+    <span class="ch-sim">🎮 排行震荡剧场</span>
+  </a>
+  <a class="ch-card" href="chapters/13-junzhi-huigui.html">
+    <div class="ch-num">第 13 章</div>
+    <div class="ch-title">均值回归</div>
+    <div class="ch-hook">树不会长到天上去——极高回报后面跟着低回报，不是可能，是一定。</div>
+    <span class="ch-sim">🎮 均值回归演示器</span>
+  </a>
+</div>
+
+<!-- ===== PART IV: 实操落地 ===== -->
+<div class="part-header">
+  <div class="part-num">Part IV</div>
+  <h2>板块四 · 实操落地（第14–20章）</h2>
+</div>
+
+<div class="chapter-grid">
+  <a class="ch-card" href="chapters/14-xunqiu-jianyi.html">
+    <div class="ch-num">第 14 章</div>
+    <div class="ch-title">寻求投资建议？</div>
+    <div class="ch-hook">理财顾问最关心的事排名：第一佣金，第二合规，第三才是你的收益。</div>
+    <span class="ch-sim">🎮 顾问费用真相计算器</span>
+  </a>
+  <a class="ch-card" href="chapters/15-jianji-zuhe.html">
+    <div class="ch-num">第 15 章</div>
+    <div class="ch-title">如何构建简单投资组合</div>
+    <div class="ch-hook">3岁孩子也能管理的三基金组合，长期跑赢95%的专业基金经理。</div>
+    <span class="ch-sim">🎮 三基金组合搭建器</span>
+  </a>
+  <a class="ch-card" href="chapters/16-zhishuhua.html">
+    <div class="ch-num">第 16 章</div>
+    <div class="ch-title">指数化——经验之胜利</div>
+    <div class="ch-hook">主动管理行业用一世纪证明他们值那个管理费，指数基金用50年推翻。</div>
+    <span class="ch-sim">🎮 指数vs主动马拉松</span>
+  </a>
+  <a class="ch-card" href="chapters/17-ruguo.html">
+    <div class="ch-num">第 17 章</div>
+    <div class="ch-title">如果……会怎样？</div>
+    <div class="ch-hook">没有博格1975年创立先锋，你今天投资的成本是现在的3-5倍。</div>
+    <span class="ch-sim">🎮 平行宇宙计算器</span>
+  </a>
+  <a class="ch-card" href="chapters/18-etf.html">
+    <div class="ch-num">第 18 章</div>
+    <div class="ch-title">ETF——交易者的工具？</div>
+    <div class="ch-hook">ETF是博格最伟大的发明，也正成为他最可怕的噩梦——解药被包装成毒药。</div>
+    <span class="ch-sim">🎮 ETF交易成本计算器</span>
+  </a>
+  <a class="ch-card" href="chapters/19-touzi-zhexue.html">
+    <div class="ch-num">第 19 章</div>
+    <div class="ch-title">你的投资哲学是什么？</div>
+    <div class="ch-hook">最好的投资策略不是收益最高的，而是你能坚持执行的。一致性远比完美性重要。</div>
+    <span class="ch-sim">🎮 投资哲学诊断书</span>
+  </a>
+  <a class="ch-card" href="chapters/20-bie-ting-wo-shuo.html">
+    <div class="ch-num">第 20 章</div>
+    <div class="ch-title">别只听我说</div>
+    <div class="ch-hook">一本书最后一章说"别信我"——这是全书最重要的一句话。博格教你的不是结论，而是怎么得出结论。</div>
+    <span class="ch-sim">🎮 证据导航员</span>
+  </a>
+</div>
+
+</div>
+
+<footer class="footer">
+  <p>《长赢投资》同伴手册 · 基于约翰·博格 <em>The Little Book of Common Sense Investing</em></p>
+  <p>用 <a href="https://claude.com/claude-code" target="_blank">Claude Code</a> 构建 · 纯浏览器运行 · 零依赖</p>
+</footer>
+
+</body>
+</html>

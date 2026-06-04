@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6章：税收也是成本 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第6章：税收也是成本">
+<meta property="og:description" content="税务局是你最大的'合伙投资人'——频繁交易的基金每年把1-3%的收益交了税。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px;transition:color .15s; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ctrl-group { margin-bottom:18px; }
+  .ctrl-group label { display:flex;justify-content:space-between;font-size:14px;color:#ccc;margin-bottom:6px; }
+  .ctrl-group label .val { color:var(--gold);font-weight:700; }
+  input[type=range] { -webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--border);outline:none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent2);cursor:pointer;border:2px solid #fff; }
+  .chart-wrap { margin:24px 0;text-align:center; }
+  .chart-wrap canvas { max-width:100%; }
+  .result-grid { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px; }
+  @media (max-width:500px) { .result-grid { grid-template-columns:1fr; } }
+  .result-card { border-radius:12px;padding:16px;text-align:center;border:1px solid var(--border); }
+  .result-card.high { background:rgba(233,69,96,.1);border-color:var(--accent2); }
+  .result-card.low { background:rgba(46,204,113,.1);border-color:var(--green); }
+  .result-card .rl { font-size:12px;color:var(--muted); }
+  .result-card .rv { font-size:22px;font-weight:700;color:#fff;margin-top:4px; }
+  .highlight-box { background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.3);border-radius:10px;padding:16px 20px;text-align:center;margin-top:16px; }
+  .highlight-box .big-number { font-size:28px;font-weight:700;color:var(--gold); }
+  .highlight-box .desc { font-size:13px;color:var(--muted);margin-top:4px; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 6 章 / 20</span>
+  <a href="07-haoshiguang.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART II · CHAPTER 6</div>
+  <h1>税收也是成本</h1>
+  <div class="en-title">Taxes Are Costs Too</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">你的基金可能帮你赚了钱，但税务局是你最大的"隐形合伙人"——每年不声不响拿走收益的1-3%。频繁交易的基金，换手率越高，税负越重。这个洞里流出去的钱，永远不会再回来。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 投资者通常只看"净值增长率"，不知道频繁买卖股票会在基金层面触发资本利得税。高换手率的基金就像一个漏水的桶——<strong>你看到的是税前回报，到手的却是税后回报，中间差了1-3个百分点</strong>。持有30年，这个差距是一个巨大的数字。</div>
+</div>
+
+<div class="sim-card" id="sim-tax">
+  <h3>🎮 税后真相计算器</h3>
+  <p class="sim-desc">同样的市场回报，不同的换手率——税后到手的钱差了多少？</p>
+
+  <div class="ctrl-group">
+    <label>初始投资 <span class="val" id="p-val">10 万</span></label>
+    <input type="range" id="principal" min="1" max="200" value="10">
+  </div>
+  <div class="ctrl-group">
+    <label>年化回报率 <span class="val" id="r-val">8%</span></label>
+    <input type="range" id="returnRate" min="3" max="15" value="8" step="0.5">
+  </div>
+  <div class="ctrl-group">
+    <label>持有年限 <span class="val" id="y-val">20 年</span></label>
+    <input type="range" id="years" min="5" max="40" value="20">
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="taxChart" width="700" height="280"></canvas>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-card low">
+      <div class="rl">低换手率 指数基金（税率影响 ~0.3%/年）</div>
+      <div class="rv" id="low-result">¥ ---</div>
+      <div class="rl" style="margin-top:4px">累计税负 <span id="low-tax">¥ ---</span></div>
+    </div>
+    <div class="result-card high">
+      <div class="rl">高换手率 主动基金（税率影响 ~2.0%/年）</div>
+      <div class="rv" id="high-result">¥ ---</div>
+      <div class="rl" style="margin-top:4px">累计税负 <span id="high-tax">¥ ---</span></div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="big-number" id="tax-diff">¥ ---</div>
+    <div class="desc">这是"隐性税收"在你不知不觉中拿走的钱</div>
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>为什么换手率越高的基金，税收效率越低？</li>
+    <li>❓ <strong>Question：</strong>你买基金时会看"换手率"这个指标吗？你的基金换手率是多少？</li>
+    <li>🪞 <strong>Reflect：</strong>在中国，基金分红目前暂免个人所得税——这给了指数基金比美国更大的优势吗？</li>
+    <li>🗣️ <strong>Recite：</strong>解释什么叫"税收拖累"——为什么它和基金管理费一样重要。</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>中国公募基金买卖股票的资本利得目前不需要缴税，基金分红收入暂免个人所得税。这意味着税收对A股基金投资者来说暂时不是主要矛盾——但这也意味着管理者没有税收效率的约束，换手率可以非常高。政策会永远不变吗？博格会说：不要依赖税收优惠的持续性。
+</div>
+
+<div class="bottomnav">
+  <a href="05-dichengben.html">← 第5章：聚焦最低成本</a>
+  <a href="07-haoshiguang.html">第7章：当好时光不再 →</a>
+</div>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('taxChart');
+  const ctx = canvas.getContext('2d');
+
+  function fmt(n) { return '¥' + (n/10000).toFixed(1) + ' 万'; }
+
+  function update() {
+    const p = parseFloat($('principal').value) * 10000;
+    const r = parseFloat($('returnRate').value);
+    const yrs = parseInt($('years').value);
+
+    $('p-val').textContent = (p/10000).toFixed(0) + ' 万';
+    $('r-val').textContent = r + '%';
+    $('y-val').textContent = yrs + ' 年';
+
+    const taxLow = 0.003;
+    const taxHigh = 0.02;
+
+    function compound(initial, rate, taxDrag, years) {
+      let v = initial, totalTax = 0;
+      for (let y = 0; y < years; y++) {
+        const gain = v * (rate/100);
+        const tax = gain * taxDrag;
+        v = v + gain - tax;
+        totalTax += tax;
+      }
+      return { final: v, tax: totalTax };
+    }
+
+    const low = compound(p, r, taxLow, yrs);
+    const high = compound(p, r, taxHigh, yrs);
+
+    $('low-result').textContent = fmt(low.final);
+    $('low-tax').textContent = fmt(low.tax);
+    $('high-result').textContent = fmt(high.final);
+    $('high-tax').textContent = fmt(high.tax);
+    $('tax-diff').textContent = fmt(low.final - high.final);
+
+    drawChart(p, r, yrs, taxLow, taxHigh);
+  }
+
+  function drawChart(p, r, yrs, taxLow, taxHigh) {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth;
+    const h = 280;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const pad = { top:30, right:40, bottom:50, left:70 };
+    const pw = w - pad.left - pad.right;
+    const ph = h - pad.top - pad.bottom;
+
+    const dataLow = [], dataHigh = [];
+    let vL = p, vH = p;
+    for (let y = 0; y <= yrs; y++) {
+      if (y % 5 === 0 || y === yrs) {
+        dataLow.push({ year: y, val: vL });
+        dataHigh.push({ year: y, val: vH });
+      }
+      if (y < yrs) {
+        vL = vL * (1 + r/100) * (1 - taxLow * (r/100)/(1+r/100));
+        vH = vH * (1 + r/100) * (1 - taxHigh * (r/100)/(1+r/100));
+      }
+    }
+
+    const allVals = dataLow.concat(dataHigh).map(d => d.val);
+    const maxVal = Math.max(...allVals), minVal = p * 0.8;
+    const yRange = maxVal - minVal || 1;
+    function xPos(y) { return pad.left + (y/yrs)*pw; }
+    function yPos(v) { return pad.top + ph - ((v-minVal)/yRange)*ph; }
+
+    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.top + (i/4)*ph;
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
+      const val = minVal + yRange*(4-i)/4;
+      ctx.fillStyle = '#8899aa'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(fmt(val), pad.left-8, y+4);
+    }
+    ctx.fillStyle = '#8899aa'; ctx.textAlign = 'center';
+    for (let y = 0; y <= yrs; y+=5) ctx.fillText(y+'年', xPos(y), pad.top+ph+18);
+
+    [ { data: dataLow, color: '#2ecc71', label: '低换手（税效好）' },
+      { data: dataHigh, color: '#e94560', label: '高换手（税效差）' } ]
+      .forEach(({data, color, label}) => {
+        ctx.strokeStyle = color; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        data.forEach((pt, i) => {
+          const px = xPos(pt.year), py = yPos(pt.val);
+          i === 0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+        });
+        ctx.stroke();
+        const last = data[data.length-1];
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.arc(xPos(last.year), yPos(last.val), 5, 0, Math.PI*2); ctx.fill();
+      });
+
+    ctx.fillStyle = '#2ecc71'; ctx.fillRect(w-170, pad.top+6, 14,14);
+    ctx.fillStyle = '#ccc'; ctx.font = '12px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('低换手率基金', w-152, pad.top+18);
+    ctx.fillStyle = '#e94560'; ctx.fillRect(w-170, pad.top+28, 14,14);
+    ctx.fillText('高换手率基金', w-152, pad.top+40);
+  }
+
+  [$('principal'), $('returnRate'), $('years')].forEach(el => el.addEventListener('input', update));
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

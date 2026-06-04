@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第18章：ETF——交易者的工具？ | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第18章：ETF——交易者的工具？">
+<meta property="og:description" content="ETF是博格最伟大的发明，也正成为他最可怕的噩梦——解药被包装成毒药。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted); }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .choice-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px; }
+  .choice-btn { padding:12px 22px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .choice-btn:hover { border-color:var(--accent); }
+  .choice-btn.selected { border-color:var(--green);background:rgba(46,204,113,.15); }
+  .chart-wrap { margin:20px 0;text-align:center; }
+  .chart-wrap canvas { max-width:100%; }
+  .result-grid { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px; }
+  @media (max-width:500px) { .result-grid { grid-template-columns:1fr; } }
+  .res-card { border-radius:12px;padding:16px;text-align:center;border:1px solid var(--border); }
+  .res-card.holder { background:rgba(46,204,113,.1);border-color:var(--green); }
+  .res-card.trader { background:rgba(233,69,96,.1);border-color:var(--accent2); }
+  .res-card .rl { font-size:12px;color:var(--muted); }
+  .res-card .rv { font-size:22px;font-weight:700;color:#fff;margin-top:4px; }
+  .highlight-box { background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.3);border-radius:10px;padding:16px 20px;text-align:center;margin-top:16px;font-size:13px;color:var(--gold); }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 18 章 / 20</span>
+  <a href="19-touzi-zhexue.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART V · CHAPTER 18</div>
+  <h1>ETF——交易者的工具？</h1>
+  <div class="en-title">The ETF — A Trader to the Cause?</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">ETF是博格最伟大的发明——也是对指数投资理念最大的威胁。它让买入整个市场变得前所未有的容易，也让<strong>交易整个市场</strong>变得前所未有的方便。解药正在被包装成毒药——而你完全可以把自己毒到。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> ETF被宣传为"指数投资工具"，但它的T+0交易便利性、盘中实时报价、杠杆/反向变种——所有这些设计都在<strong>引诱你交易，而不是持有</strong>。而一旦你开始频繁交易ETF，你就违背了指数投资的核心理念。你变成了一个换了工具的投机者。</div>
+</div>
+
+<div class="sim-card" id="sim-etf">
+  <h3>🎮 ETF交易成本计算器</h3>
+  <p class="sim-desc">同一个指数ETF。一个买入持有，一个频繁交易。选一个角色，看30年后的差距。</p>
+
+  <div class="choice-row" id="choice-row">
+    <button class="choice-btn selected" data-type="holder">🧘 买入并持有（每2年交易2次）</button>
+    <button class="choice-btn" data-type="trader">🔥 频繁交易（每月交易2次）</button>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="etfChart" width="700" height="280"></canvas>
+  </div>
+
+  <div class="result-grid">
+    <div class="res-card holder"><div class="rl">买入持有者</div><div class="rv" id="holder-result">¥ ---</div><div class="rl" style="margin-top:4px">累计交易成本 <span id="holder-cost">¥ ---</span></div></div>
+    <div class="res-card trader"><div class="rl">频繁交易者</div><div class="rv" id="trader-result">¥ ---</div><div class="rl" style="margin-top:4px">累计交易成本 <span id="trader-cost">¥ ---</span></div></div>
+  </div>
+
+  <div class="highlight-box">
+    💡 ETF是好工具——但工具的效果取决于使用方式。博格会说：<strong>把ETF当指数基金来用（买入持有），不要当股票来炒。</strong>
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>博格为什么对ETF的"交易便利性"感到担忧？</li>
+    <li>❓ <strong>Question：</strong>你买过ETF吗？你持有了多久？平均多久交易一次？</li>
+    <li>🪞 <strong>Reflect：</strong>ETF让你更容易做正确的事（分散投资），还是更容易做错误的事（频繁交易）？</li>
+    <li>🗣️ <strong>Recite：</strong>"ETF是火——可以用来取暖，也可以烧掉房子。区别在于你怎么用。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>中国ETF市场近年来爆发式增长。行业ETF（芯片、新能源、消费等）成为T+0交易者的热门工具——但行业ETF的波动远大于宽基指数，频繁交易的成本（佣金+印花税+价差）会快速侵蚀收益。A股ETF还有一个特色：因为散户多，ETF折溢价波动较大，给频繁交易者带来额外的隐性成本。
+</div>
+
+<div class="bottomnav">
+  <a href="17-ruguo.html">← 第17章：如果……会怎样？</a>
+  <a href="19-touzi-zhexue.html">第19章：你的投资哲学是什么？ →</a>
+</nav>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('etfChart');
+  const ctx = canvas.getContext('2d');
+
+  const initial = 100000, marketReturn = 7;
+  let type = 'holder';
+
+  function fmt(n) { return '¥' + (n/10000).toFixed(1) + ' 万'; }
+
+  function compound(p, r, tradesPerYear, costPerTrade, yrs) {
+    let v = p, totalCost = 0;
+    for (let y = 0; y < yrs; y++) {
+      const preFee = v * (1 + r/100);
+      const tradeCost = tradesPerYear * costPerTrade * (v / 10000);
+      totalCost += tradeCost;
+      v = preFee - tradeCost;
+    }
+    return { final: v, cost: totalCost };
+  }
+
+  function update() {
+    const holderTrades = 1; // 2 trades every 2 years
+    const traderTrades = 24; // 2 trades per month
+    const costPerTrade = 30; // ~¥30 per trade (commission + spread + stamp)
+
+    const holder = compound(initial, marketReturn, holderTrades, costPerTrade, 30);
+    const trader = compound(initial, marketReturn, traderTrades, costPerTrade, 30);
+
+    $('holder-result').textContent = fmt(holder.final);
+    $('holder-cost').textContent = fmt(holder.cost);
+    $('trader-result').textContent = fmt(trader.final);
+    $('trader-cost').textContent = fmt(trader.cost);
+
+    drawChart(holder, trader);
+  }
+
+  function drawChart(holder, trader) {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = 280;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const pad = { top:25, right:40, bottom:50, left:70 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+    const yrs = 30;
+
+    // Generate curves
+    const dataH = [], dataT = [];
+    let vH = initial, cH = 0, vT = initial, cT = 0;
+    for (let y = 0; y <= yrs; y++) {
+      if (y % 5 === 0 || y === yrs) {
+        dataH.push({ year: y, val: vH - cH });
+        dataT.push({ year: y, val: vT - cT });
+      }
+      if (y < yrs) {
+        vH = vH * (1 + marketReturn/100);
+        cH += 1 * 30 * (vH / 10000);
+        vT = vT * (1 + marketReturn/100);
+        cT += 24 * 30 * (vT / 10000);
+      }
+    }
+
+    const allVals = dataH.concat(dataT).map(d => d.val);
+    const maxV = Math.max(...allVals), minV = initial * 0.8;
+    const range = maxV - minV || 1;
+    function xPos(y) { return pad.left + (y/yrs)*pw; }
+    function yPos(v) { return pad.top + ph - ((v-minV)/range)*ph; }
+
+    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.top + (i/4)*ph;
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
+      ctx.fillStyle = '#8899aa'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(fmt(minV + range*(4-i)/4), pad.left-6, y+4);
+    }
+    ctx.fillStyle = '#8899aa'; ctx.textAlign = 'center';
+    for (let y = 0; y <= yrs; y+=5) ctx.fillText(y+'年', xPos(y), pad.top+ph+16);
+
+    [{ data: dataH, color: '#2ecc71' }, { data: dataT, color: '#e94560' }].forEach(({data, color}) => {
+      ctx.strokeStyle = color; ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      data.forEach((pt, i) => { const px = xPos(pt.year), py = yPos(pt.val); i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); });
+      ctx.stroke();
+      const last = data[data.length-1];
+      ctx.fillStyle = color; ctx.beginPath(); ctx.arc(xPos(last.year), yPos(last.val), 5, 0, Math.PI*2); ctx.fill();
+    });
+
+    ctx.fillStyle = '#2ecc71'; ctx.fillRect(w-145, pad.top+6, 14, 14);
+    ctx.fillStyle = '#ccc'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('买入持有', w-127, pad.top+18);
+    ctx.fillStyle = '#e94560'; ctx.fillRect(w-145, pad.top+26, 14, 14);
+    ctx.fillText('频繁交易', w-127, pad.top+38);
+  }
+
+  $('choice-row').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    document.querySelectorAll('#choice-row button').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    type = btn.dataset.type;
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

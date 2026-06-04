@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9章：资产配置 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第9章：资产配置">
+<meta property="og:description" content="选哪只股票、什么时候买卖——你花80%精力研究的事，对结果的影响不到10%。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .pie-row { display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;margin-bottom:24px; }
+  .chart-wrap { text-align:center; }
+  .chart-wrap canvas { max-width:100%; }
+  .sliders-col { flex:1;min-width:240px; }
+  .ctrl-group { margin-bottom:14px; }
+  .ctrl-group label { display:flex;justify-content:space-between;font-size:14px;color:#ccc;margin-bottom:4px; }
+  .ctrl-group label .val { color:var(--gold);font-weight:700; }
+  input[type=range] { -webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--border);outline:none;margin:0; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent2);cursor:pointer;border:2px solid #fff; }
+  .stats-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px; }
+  @media (max-width:550px) { .stats-grid { grid-template-columns:1fr; } }
+  .stat-card { border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);background:rgba(15,52,96,.2); }
+  .stat-card .sl { font-size:12px;color:var(--muted); }
+  .stat-card .sv { font-size:20px;font-weight:700;color:#fff;margin-top:4px; }
+  .presets { display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px; }
+  .presets button { padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s; }
+  .presets button:hover { border-color:var(--accent);color:#fff; }
+  .presets button.active { background:var(--accent);border-color:var(--accent);color:#fff; }
+  .fee-note { font-size:12px;color:var(--muted);text-align:center;margin-top:8px; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 9 章 / 20</span>
+  <a href="10-zhongxing-quxian.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART II · CHAPTER 9</div>
+  <h1>资产配置</h1>
+  <div class="en-title">Asset Allocation</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">选哪只股票、什么时候买入、什么时候卖出——这些你花了80%精力研究的事情，加起来对你最终投资结果的解释力不到10%。真正决定你赚多赚少的，是你觉得最简单、最无聊的那个决定：股票和债券各买多少。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 投资行业让我们相信"选股能力"和"择时能力"是最重要的。但学术研究一致表明：<strong>资产配置解释了90%以上的回报波动</strong>。选股和择时基本都是噪声。你花最多时间研究的问题，恰恰是最不重要的问题。</div>
+</div>
+
+<div class="sim-card" id="sim-allocation">
+  <h3>🎮 资产配置决策器</h3>
+  <p class="sim-desc">拖动滑块，调整股/债/现金比例。看看你的配置画像。</p>
+
+  <div class="presets" id="presets">
+    <button data-s="20" data-b="60" data-c="20">保守型 20/60/20</button>
+    <button data-s="40" data-b="40" data-c="20">稳健型 40/40/20</button>
+    <button data-s="60" data-b="30" data-c="10" class="active">平衡型 60/30/10</button>
+    <button data-s="80" data-b="15" data-c="5">成长型 80/15/5</button>
+    <button data-s="90" data-b="5" data-c="5">激进型 90/5/5</button>
+  </div>
+
+  <div class="pie-row">
+    <div class="chart-wrap">
+      <canvas id="pieChart" width="300" height="300"></canvas>
+    </div>
+    <div class="sliders-col">
+      <div class="ctrl-group">
+        <label>股票 <span class="val" id="s-val">60%</span></label>
+        <input type="range" id="stockPct" min="0" max="100" value="60">
+      </div>
+      <div class="ctrl-group">
+        <label>债券 <span class="val" id="b-val">30%</span></label>
+        <input type="range" id="bondPct" min="0" max="100" value="30">
+      </div>
+      <div class="ctrl-group">
+        <label>现金 <span class="val" id="c-val">10%</span></label>
+        <input type="range" id="cashPct" min="0" max="100" value="10">
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="sl">预期年化收益</div><div class="sv" id="s-return" style="color:#2ecc71">--</div></div>
+    <div class="stat-card"><div class="sl">年化波动率</div><div class="sv" id="s-vol" style="color:#f0a500">--</div></div>
+    <div class="stat-card"><div class="sl">最差年份估算</div><div class="sv" id="s-worst" style="color:#e94560">--</div></div>
+  </div>
+  <p class="fee-note">说明：以上数据基于美股历史长期平均值的粗略估算，用于示意性教学，不构成投资建议。</p>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>博格为什么说"资产配置是最重要的决定"？</li>
+    <li>❓ <strong>Question：</strong>你目前的股/债/现金比例是多少？你是什么时候、基于什么理由决定的？</li>
+    <li>🪞 <strong>Reflect：</strong>如果你发现自己花了大量时间研究"哪只股票更好"，但没花时间想"股票应该占多少"——这说明什么？</li>
+    <li>🗣️ <strong>Recite：</strong>"资产配置决定了你90%的回报——但大部分投资者花了90%的时间研究只决定10%的事情。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>A股投资者面临一个特殊挑战：A股波动率大约是美股的1.5倍，但债券回报率低于美国。一个典型的中国平衡型组合可能是 50%沪深300 + 20%标普500 QDII + 20%中国国债 + 10%现金——兼顾收益和分散。核心原理与博格完全一致。
+</div>
+
+<div class="bottomnav">
+  <a href="08-zhaiquan.html">← 第8章：选择合理的债券基金</a>
+  <a href="10-zhongxing-quxian.html">第10章：钟形曲线的右侧 →</a>
+</div>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('pieChart');
+  const ctx = canvas.getContext('2d');
+
+  function normalize() {
+    let s = parseInt($('stockPct').value), b = parseInt($('bondPct').value), c = parseInt($('cashPct').value);
+    const total = s + b + c || 1;
+    s = Math.round(s / total * 100);
+    b = Math.round(b / total * 100);
+    c = 100 - s - b;
+    $('stockPct').value = s; $('bondPct').value = b; $('cashPct').value = c;
+    $('s-val').textContent = s + '%'; $('b-val').textContent = b + '%'; $('c-val').textContent = c + '%';
+    return { s, b, c };
+  }
+
+  function drawPie(s, b, c) {
+    const dpr = window.devicePixelRatio || 1;
+    const size = Math.min(canvas.clientWidth, 300);
+    canvas.width = size * dpr; canvas.height = size * dpr;
+    canvas.style.width = size + 'px'; canvas.style.height = size + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    const cx = size/2, cy = size/2, r = size/2 - 20;
+    ctx.clearRect(0,0,size,size);
+
+    const slices = [
+      { pct: s, color: '#e94560', label: '股票' },
+      { pct: b, color: '#3498db', label: '债券' },
+      { pct: c, color: '#f0a500', label: '现金' },
+    ].filter(sl => sl.pct > 0);
+
+    let angle = -Math.PI/2;
+    slices.forEach(sl => {
+      const sweep = (sl.pct / 100) * Math.PI * 2;
+      ctx.fillStyle = sl.color;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, angle, angle + sweep);
+      ctx.closePath();
+      ctx.fill();
+
+      // Label
+      const midAngle = angle + sweep / 2;
+      const lx = cx + Math.cos(midAngle) * r * 0.65;
+      const ly = cy + Math.sin(midAngle) * r * 0.65;
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 13px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(sl.pct + '%', lx, ly - 6);
+      ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.fillText(sl.label, lx, ly + 10);
+
+      angle += sweep;
+    });
+  }
+
+  function update() {
+    const { s, b, c } = normalize();
+
+    // Portfolio estimates
+    const stockR = 9, bondR = 4, cashR = 1.5;
+    const portfolioReturn = (stockR*s + bondR*b + cashR*c) / 100;
+    const stockVol = 18, bondVol = 4, cashVol = 0.5;
+    const portfolioVol = Math.sqrt(
+      Math.pow(stockVol*s/100,2) + Math.pow(bondVol*b/100,2) + Math.pow(cashVol*c/100,2)
+    );
+    const worstYear = portfolioReturn - 1.5 * portfolioVol;
+
+    $('s-return').textContent = portfolioReturn.toFixed(1) + '%';
+    $('s-vol').textContent = portfolioVol.toFixed(1) + '%';
+    $('s-worst').textContent = worstYear.toFixed(1) + '%';
+
+    drawPie(s, b, c);
+  }
+
+  [$('stockPct'), $('bondPct'), $('cashPct')].forEach(el => {
+    el.addEventListener('input', update);
+  });
+
+  $('presets').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    document.querySelectorAll('#presets button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    $('stockPct').value = btn.dataset.s;
+    $('bondPct').value = btn.dataset.b;
+    $('cashPct').value = btn.dataset.c;
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

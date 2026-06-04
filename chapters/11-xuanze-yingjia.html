@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第11章：选择长期赢家 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第11章：选择长期赢家">
+<meta property="og:description" content="过去5年最好的基金经理，未来5年最差的概率远大于继续最好的概率。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted); }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .rank-list { display:flex;flex-direction:column;gap:6px;margin-bottom:20px; }
+  .rank-row { display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(15,52,96,.2);border-radius:8px;transition:all .3s;font-size:14px;color:#ccc; }
+  .rank-row .rn { font-weight:700;color:var(--muted);width:24px;text-align:right; }
+  .rank-row:nth-child(1) .rn { color:var(--gold); }
+  .rank-row:nth-child(1) { border-left:3px solid var(--gold); }
+  .rank-row .rname { flex:1; }
+  .btn-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px; }
+  .btn { padding:10px 20px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .btn:hover { border-color:var(--accent); }
+  .btn.primary { border-color:var(--accent2);background:rgba(233,69,96,.15); }
+  .note-box { background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.3);border-radius:10px;padding:16px 20px;text-align:center;margin-top:16px;font-size:14px;color:var(--gold);display:none; }
+  .note-box.show { display:block; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 11 章 / 20</span>
+  <a href="12-zuori-yingjia.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART III · CHAPTER 11</div>
+  <h1>选择长期赢家</h1>
+  <div class="en-title">Selecting Long-Term Winners</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">晨星五星评级、年度冠军基金、"十年十倍"传奇——这些闪闪发光的标签有一个共同点：它们都是反向指标。过去5年表现最好的基金经理，未来5年表现最差的概率，远大于继续保持最好的概率。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 投资者天然认为"过去好=能力强=未来也好"。但数据无情地显示：<strong>基金业绩几乎没有持续性</strong>——除了表现最差的那批（因为高费用持续拖累）。冠军基金的辉煌通常是因为押中了某个特定风格或行业，风格一换，冠军变输家。</div>
+</div>
+
+<div class="sim-card" id="sim-winner-curse">
+  <h3>🎮 冠军魔咒揭秘器</h3>
+  <p class="sim-desc">下面是去年排名前10的基金。点"时间快进一年"，看看谁能留在前10——<em>找找去年的冠军去哪了。</em></p>
+
+  <div class="rank-list" id="rank-list"></div>
+
+  <div class="btn-row">
+    <button class="btn primary" id="btn-forward">⏩ 快进一年</button>
+    <button class="btn" id="btn-reset">🔄 重新开始</button>
+  </div>
+  <div style="text-align:center;font-size:13px;color:var(--muted);margin-top:8px;">第 <span id="year-num">1</span> 年</div>
+
+  <div class="note-box" id="champion-note">
+    🏆 发现了吗？去年的冠军，今年已经不在前10了。甚至可能在倒数。这就是"冠军魔咒"——历史业绩不是未来的地图。
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>为什么基金业绩的"持续性"比投资者想象的要低得多？</li>
+    <li>❓ <strong>Question：</strong>你上一次选基金时，看过它的历史排名吗？如果看了，你假设这个排名会持续吗？</li>
+    <li>🪞 <strong>Reflect：</strong>如果晨星评级不可靠，什么才是可靠的？博格说：<strong>只有低成本是可靠的</strong>。</li>
+    <li>🗣️ <strong>Recite：</strong>"买冠军基金的逻辑和买去年涨最多的股票一样——追涨杀跌的体面说法。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>中国基金业的"冠军魔咒"同样存在。2020年的明星基金经理（重仓消费/医药），在2021-2024年普遍大幅跑输。A股的风格轮动极为剧烈（大盘/小盘、价值/成长、消费/科技），一个基金经理的能力圈很难覆盖所有风格。第11章的悬案回访：冠军的"能力"有多少是选股，有多少是刚好踩中了风格？
+</div>
+
+<div class="bottomnav">
+  <a href="10-zhongxing-quxian.html">← 第10章：钟形曲线的右侧</a>
+  <a href="12-zuori-yingjia.html">第12章：昨日赢家，明日输家 →</a>
+</nav>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const FUND_NAMES = [
+    '星辰成长混合', '蓝筹精选股票', '科技先锋灵活配置', '消费升级主题',
+    '价值发现量化', '新兴产业ETF联接', '健康中国医药', '新能源领航',
+    '中小盘活力', '稳健增长FoF', '红利低波指数', '高端制造精选',
+    '数字经济主题', '碳中和龙头', '国企改革红利'
+  ];
+
+  let yearNum = 1;
+  let rankings = [];
+  let championId = -1;
+  let championGone = false;
+
+  function shuffleRankings() {
+    // Generate new random rankings
+    const ids = Array.from({length: 15}, (_, i) => i);
+    // Fisher-Yates shuffle
+    for (let i = ids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
+    rankings = ids;
+  }
+
+  function renderRankings() {
+    const list = $('rank-list');
+    list.innerHTML = rankings.slice(0, 10).map((id, idx) => {
+      const name = FUND_NAMES[id];
+      const isChamp = id === championId;
+      let cls = 'rank-row';
+      if (isChamp && idx >= 5) cls += ' style="border-left:3px solid #e94560; opacity:0.7;"';
+      const rankColor = idx === 0 ? 'color:#f0a500;' : '';
+      return `<div class="rank-row"${isChamp && idx >= 5 ? ' style="border-left:3px solid #e94560; opacity:0.7;"' : ''}>
+        <span class="rn" style="${rankColor}">#${idx+1}</span>
+        <span class="rname">${name}</span>
+        ${isChamp ? '<span style="font-size:11px;color:#f0a500;">👈 去年冠军</span>' : ''}
+      </div>`;
+    }).join('');
+  }
+
+  function forwardYear() {
+    yearNum++;
+    $('year-num').textContent = yearNum;
+
+    if (yearNum === 2) {
+      championId = rankings[0];
+    }
+
+    shuffleRankings();
+
+    if (yearNum >= 3 && championId >= 0) {
+      const newPos = rankings.indexOf(championId);
+      if (newPos >= 5 || newPos < 0) {
+        championGone = true;
+        $('champion-note').classList.add('show');
+        // Put champion near bottom
+        if (newPos < 0) rankings.push(championId);
+      }
+    }
+
+    if (yearNum > 3 && championGone) {
+      // Ensure champion stays out of top 5
+      const cp = rankings.indexOf(championId);
+      if (cp >= 0 && cp < 5 && cp < rankings.length) {
+        rankings.splice(cp, 1);
+        rankings.push(championId);
+      }
+    }
+
+    renderRankings();
+  }
+
+  function reset() {
+    yearNum = 1;
+    championId = -1;
+    championGone = false;
+    $('year-num').textContent = '1';
+    $('champion-note').classList.remove('show');
+    shuffleRankings();
+    renderRankings();
+  }
+
+  $('btn-forward').addEventListener('click', forwardYear);
+  $('btn-reset').addEventListener('click', reset);
+
+  reset();
+})();
+</script>
+</body>
+</html>

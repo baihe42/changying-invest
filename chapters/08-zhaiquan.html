@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第8章：选择合理的债券基金 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第8章：选择合理的债券基金">
+<meta property="og:description" content="年轻人不需要债券？错。债券不是为了赚钱，是让你在暴跌时不恐慌抛售。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ctrl-group { margin-bottom:18px; }
+  .ctrl-group label { display:flex;justify-content:space-between;font-size:14px;color:#ccc;margin-bottom:6px; }
+  .ctrl-group label .val { color:var(--gold);font-weight:700; }
+  input[type=range] { -webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--border);outline:none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent2);cursor:pointer;border:2px solid #fff; }
+  .chart-wrap { margin:24px 0;text-align:center; }
+  .chart-wrap canvas { max-width:100%; }
+  .stats-row { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px; }
+  @media (max-width:550px) { .stats-row { grid-template-columns:1fr; } }
+  .stat-card { border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);background:rgba(15,52,96,.2); }
+  .stat-card .sl { font-size:12px;color:var(--muted); }
+  .stat-card .sv { font-size:22px;font-weight:700;color:#fff;margin-top:4px; }
+  .presets { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px; }
+  .presets button { padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s; }
+  .presets button:hover { border-color:var(--accent);color:#fff; }
+  .presets button.active { background:var(--accent);border-color:var(--accent);color:#fff; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 8 章 / 20</span>
+  <a href="09-zichan-peizhi.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART II · CHAPTER 8</div>
+  <h1>选择合理的债券基金</h1>
+  <div class="en-title">Selecting a Sensible Bond Fund</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">"我才30岁，还有30年投资期，应该100%投股票。"——这句话听起来很有道理，但你忘了一件事：100%股票在暴跌50%的时候，大部分人根本扛不住。加20%债券，总回报没少多少，最大回撤直接减半。债券不是为你赚钱的，是让你能拿得住的。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 用纯数学算，年轻人确实该100%股票。但投资不是纯数学——<strong>投资是一场心理战</strong>。最大回撤才是决定你能否坚持执行的唯一变量。20%的债券就像安全带——平时你觉得它多余，撞车时它救你的命。</div>
+</div>
+
+<div class="sim-card" id="sim-bond">
+  <h3>🎮 股债配比探索器</h3>
+  <p class="sim-desc">拖动滑块，看不同股债比例在收益和回撤之间的取舍。</p>
+
+  <div class="presets" id="presets">
+    <button data-stock="100">激进青年 (100%股)</button>
+    <button data-stock="80">成长型 (80%股)</button>
+    <button data-stock="60" class="active">平衡型 (60%股)</button>
+    <button data-stock="40">稳健型 (40%股)</button>
+    <button data-stock="20">保守型 (20%股)</button>
+  </div>
+
+  <div class="ctrl-group">
+    <label>股票占比 <span class="val" id="stock-val">60%</span></label>
+    <input type="range" id="stockPct" min="0" max="100" value="60">
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="bondChart" width="700" height="260"></canvas>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="sl">预期年化回报</div><div class="sv" id="stat-return" style="color:#2ecc71">--</div></div>
+    <div class="stat-card"><div class="sl">最大回撤</div><div class="sv" id="stat-drawdown" style="color:#e94560">--</div></div>
+    <div class="stat-card"><div class="sl">最长回本年限</div><div class="sv" id="stat-recovery" style="color:#f0a500">--</div></div>
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>债券在投资组合中的"真正作用"是什么？（提示：不是赚钱）</li>
+    <li>❓ <strong>Question：</strong>你目前的股债比例是多少？凭什么这么定？</li>
+    <li>🪞 <strong>Reflect：</strong>"100%股票的收益最高"——但收益最高的策略往往最难坚持。你能做到吗？</li>
+    <li>🗣️ <strong>Recite：</strong>解释为什么加入债券让总回报"几乎没变"但投资体验"完全不同"。</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>中国国债指数基金和利率债基金是低成本债券投资的好选择。A股波动率远高于美股（沪深300年化波动约25% vs S&amp;P 500约15%），这意味着A股投资者更需要债券来平滑波动。用中证全债指数+沪深300的历史数据回测：加入20%债券的组合，夏普比率通常优于100%股票。
+</div>
+
+<div class="bottomnav">
+  <a href="07-haoshiguang.html">← 第7章：当好时光不再</a>
+  <a href="09-zichan-peizhi.html">第9章：资产配置 →</a>
+</div>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('bondChart');
+  const ctx = canvas.getContext('2d');
+
+  // Approximate historical data for illustration
+  const stockReturn = 9, stockVol = 18; // annual return & max drawdown for stocks
+  const bondReturn = 4, bondVol = 4;
+  const correlation = 0.1;
+
+  function update() {
+    const stockPct = parseInt($('stockPct').value);
+    const bondPct = 100 - stockPct;
+    $('stock-val').textContent = stockPct + '%';
+
+    // Weighted return
+    const portfolioReturn = (stockReturn * stockPct + bondReturn * bondPct) / 100;
+    // Approximate drawdown (non-linear due to diversification benefit)
+    const diversificationBenefit = (stockPct * bondPct) / 10000 * 0.4;
+    const portfolioDrawdown = (stockVol * stockPct + bondVol * bondPct) / 100 * (1 - diversificationBenefit);
+    const recoveryYrs = Math.max(1, Math.round(portfolioDrawdown / (portfolioReturn || 1) * 2.5));
+
+    $('stat-return').textContent = portfolioReturn.toFixed(1) + '%';
+    $('stat-drawdown').textContent = '-' + portfolioDrawdown.toFixed(1) + '%';
+    $('stat-recovery').textContent = recoveryYrs + ' 年';
+
+    drawChart(stockPct, portfolioReturn, portfolioDrawdown);
+  }
+
+  function drawChart(stockPct, pReturn, pDrawdown) {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = 260;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const pad = { top:30, right:40, bottom:50, left:75 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+
+    // Draw scatter of known points
+    const points = [
+      { stock: 0,   ret: 4,  dd: 4 },
+      { stock: 20,  ret: 5,  dd: 8 },
+      { stock: 40,  ret: 6,  dd: 14 },
+      { stock: 60,  ret: 7,  dd: 22 },
+      { stock: 80,  ret: 8,  dd: 32 },
+      { stock: 100, ret: 9,  dd: 50 },
+    ];
+
+    // X-axis: drawdown, Y-axis: return
+    const maxDd = 55, minDd = 0;
+    const maxRet = 10, minRet = 3;
+    function xPos(dd) { return pad.left + ((dd - minDd) / (maxDd - minDd)) * pw; }
+    function yPos(ret) { return pad.top + ph - ((ret - minRet) / (maxRet - minRet)) * ph; }
+
+    // Grid
+    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 5; i++) {
+      const x = pad.left + (i/5)*pw, y = pad.top + (i/5)*ph;
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x,pad.top); ctx.lineTo(x,pad.top+ph); ctx.stroke();
+      ctx.fillStyle = '#8899aa'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText((minRet + (maxRet-minRet)*(5-i)/5).toFixed(0)+'%', pad.left-6, y+4);
+      ctx.textAlign = 'center';
+      ctx.fillText('-' + (minDd + (maxDd-minDd)*i/5).toFixed(0)+'%', x, pad.top+ph+16);
+    }
+    ctx.fillStyle = '#8899aa'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.fillText('最大回撤 →', w - pad.right - 40, pad.top+ph+28);
+    ctx.save(); ctx.translate(pad.left-50, pad.top+ph/2); ctx.rotate(-Math.PI/2);
+    ctx.fillText('预期年化回报 →', 0, 0); ctx.restore();
+
+    // Draw efficient frontier curve
+    ctx.strokeStyle = '#0f3460'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let i = 0; i < points.length; i++) {
+      const px = xPos(points[i].dd), py = yPos(points[i].ret);
+      i === 0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+    }
+    ctx.stroke();
+
+    // Draw points
+    points.forEach(pt => {
+      ctx.fillStyle = pt.stock === stockPct ? '#f0a500' : '#3a5070';
+      ctx.beginPath();
+      ctx.arc(xPos(pt.dd), yPos(pt.ret), pt.stock === stockPct ? 8 : 5, 0, Math.PI*2);
+      ctx.fill();
+      if (pt.stock === stockPct) {
+        ctx.strokeStyle = '#f0a500'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(xPos(pt.dd), yPos(pt.ret), 12, 0, Math.PI*2); ctx.stroke();
+      }
+    });
+
+    // Labels for key points
+    ctx.fillStyle = '#ccc'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    points.forEach(pt => {
+      if (pt.stock % 20 === 0) {
+        ctx.fillText(pt.stock + '%股', xPos(pt.dd) + 10, yPos(pt.ret) - 4);
+      }
+    });
+
+    // Current portfolio indicator
+    ctx.fillStyle = '#f0a500'; ctx.font = 'bold 13px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('← 你在这里 (' + stockPct + '%股 / ' + (100-stockPct) + '%债)', w/2, pad.top - 5);
+  }
+
+  $('stockPct').addEventListener('input', update);
+
+  $('presets').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    document.querySelectorAll('#presets button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    $('stockPct').value = btn.dataset.stock;
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

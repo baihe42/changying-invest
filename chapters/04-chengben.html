@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第4章：成本——投资回报的算术 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第4章：成本——投资回报的算术">
+<meta property="og:description" content="总回报 - 成本 = 净回报。但99%的人选基金时看的是总回报。">
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --card: #16213e;
+    --accent: #0f3460;
+    --accent2: #e94560;
+    --gold: #f0a500;
+    --text: #e0e0e0;
+    --muted: #8899aa;
+    --border: #1f3050;
+    --green: #2ecc71;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* --- Top Nav --- */
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(15,52,96,.5);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+  .topnav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color .15s;
+  }
+  .topnav a:hover { color: #fff; }
+  .topnav .chap-indicator {
+    font-size: 13px;
+    color: var(--gold);
+  }
+
+  /* --- Layout --- */
+  .container { max-width: 800px; margin: 0 auto; padding: 24px 20px 40px; }
+
+  /* --- Chapter Header --- */
+  .ch-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .ch-header .ch-num {
+    font-size: 13px;
+    color: var(--accent2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .ch-header h1 {
+    font-size: clamp(22px, 4vw, 30px);
+    color: #fff;
+    margin: 6px 0 4px;
+  }
+  .ch-header .en-title {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* --- Hook Block --- */
+  .hook-block {
+    background: linear-gradient(135deg, #1a1030, #201835);
+    border-left: 4px solid var(--accent2);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .hook-block .hook-quote {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .hook-block .hook-quote::before { content: "💡 "; }
+  .hook-block .hook-why {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .hook-block .hook-why strong { color: var(--accent2); }
+
+  /* --- Simulator --- */
+  .sim-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+  .sim-card h3 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sim-card .sim-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* Sliders */
+  .ctrl-group { margin-bottom: 20px; }
+  .ctrl-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 6px;
+  }
+  .ctrl-group label .val {
+    color: var(--gold);
+    font-weight: 700;
+  }
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent2);
+    cursor: pointer;
+    border: 2px solid #fff;
+  }
+
+  /* Result Cards */
+  .result-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  @media (max-width: 500px) { .result-row { grid-template-columns: 1fr; } }
+  .result-card {
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .result-card.active {
+    background: rgba(233,69,96,.1);
+    border-color: var(--accent2);
+  }
+  .result-card.index {
+    background: rgba(46,204,113,.1);
+    border-color: var(--green);
+  }
+  .result-card .fund-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .result-card .fund-amount {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .result-card.active .fund-amount { color: var(--accent2); }
+  .result-card.index .fund-amount { color: var(--green); }
+  .result-card .fund-fee {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Highlight Box */
+  .highlight-box {
+    background: rgba(240,165,0,.1);
+    border: 1px solid rgba(240,165,0,.3);
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .highlight-box .big-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .highlight-box .desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Canvas */
+  .chart-wrap {
+    margin: 24px 0;
+    text-align: center;
+  }
+  .chart-wrap canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* --- PQ4R Block --- */
+  .pq4r-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+  .pq4r-block h3 { font-size: 16px; color: #fff; margin-bottom: 12px; }
+  .pq4r-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .pq4r-block ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #ccc;
+  }
+  .pq4r-block ul li::before {
+    content: attr(data-icon);
+    margin-right: 8px;
+  }
+
+  /* --- Bottom Nav --- */
+  .bottomnav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .bottomnav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all .15s;
+  }
+  .bottomnav a:hover { border-color: var(--accent); color: #fff; }
+
+  /* --- A-share note --- */
+  .ashare-note {
+    background: rgba(15,52,96,.3);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .ashare-note strong { color: var(--gold); }
+
+  /* --- Footer --- */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 4 章 / 20</span>
+  <a href="05-dichengben.html">下一章 →</a>
+</nav>
+
+<div class="container">
+
+<!-- ===== CHAPTER HEADER ===== -->
+<div class="ch-header">
+  <div class="ch-num">PART II · CHAPTER 4</div>
+  <h1>成本——投资回报的算术</h1>
+  <div class="en-title">Cost Matters — The Arithmetic of Investment Returns</div>
+</div>
+
+<!-- ===== HOOK ===== -->
+<div class="hook-block">
+  <div class="hook-quote">总回报 − 成本 = 净回报。这个算式简单到小学生都能看懂——但99%的投资者选基金时盯着总回报，从不算净回报。这就像买车只看最高时速，不看过路费。</div>
+  <div class="hook-why">
+    <strong>为什么这个观点反常识？</strong> 在其他消费领域，"一分钱一分货"是对的。但在投资领域，<strong>高成本不仅不带来高回报，还稳定地、可预测地、数学上必然地降低你的净回报</strong>。博格用一个算术恒等式告诉你：主动基金经理的智商再高，也突破不了"总回报−成本=净回报"这个铁律。
+  </div>
+</div>
+
+<!-- ===== SIMULATOR ===== -->
+<div class="sim-card" id="sim-cost">
+  <h3>🎮 成本复利吞噬机</h3>
+  <p class="sim-desc">拖动滑块，看看30年里"看不见的费用"如何一口一口吃掉你的财富。</p>
+
+  <!-- Controls -->
+  <div class="ctrl-group">
+    <label>初始投资 <span class="val" id="principal-val">10 万元</span></label>
+    <input type="range" id="principal" min="1" max="200" value="10" step="1">
+  </div>
+  <div class="ctrl-group">
+    <label>年化市场回报率 <span class="val" id="return-val">7%</span></label>
+    <input type="range" id="returnRate" min="3" max="15" value="7" step="0.5">
+  </div>
+  <div class="ctrl-group">
+    <label>持有年限 <span class="val" id="years-val">30 年</span></label>
+    <input type="range" id="years" min="5" max="50" value="30" step="1">
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-wrap">
+    <canvas id="costChart" width="700" height="300"></canvas>
+  </div>
+
+  <!-- Results -->
+  <div class="result-row">
+    <div class="result-card active">
+      <div class="fund-label">主动基金（管理费 1.5%/年）</div>
+      <div class="fund-amount" id="active-amount">¥ ---</div>
+      <div class="fund-fee" id="active-fee">累计费用 ¥ ---</div>
+    </div>
+    <div class="result-card index">
+      <div class="fund-label">指数基金（管理费 0.15%/年）</div>
+      <div class="fund-amount" id="index-amount">¥ ---</div>
+      <div class="fund-fee" id="index-fee">累计费用 ¥ ---</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="big-number" id="cost-drag">¥ ---</div>
+    <div class="desc" id="cost-drag-desc">这是你多付的费用——它本可以在你的账户里继续复利</div>
+  </div>
+</div>
+
+<!-- ===== PQ4R ===== -->
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li data-icon="🔍"><strong>Preview：</strong>博格在本章的最核心算式是什么？为什么说它是"算术恒等式"而非预测？</li>
+    <li data-icon="❓"><strong>Question：</strong>你最近一次选基金时，有看过"总回报"和"净回报"的区别吗？</li>
+    <li data-icon="🪞"><strong>Reflect：</strong>如果"高费用=低回报"是铁律，为什么中国还有那么多人在买1.5%管理费的主动基金？</li>
+    <li data-icon="🗣️"><strong>Recite：</strong>试着向一个不懂投资的朋友解释：为什么买最便宜的基金反而是最聪明的策略。</li>
+  </ul>
+</div>
+
+<!-- ===== A-Share Note ===== -->
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>中国主动偏股基金的平均管理费约 1.5%，指数基金约 0.15%–0.5%。在某些年份A股主动基金确实跑赢了指数——但博格的算术恒等式一样适用：跑赢的钱来自其他投资者（主要是散户）的亏损，不是凭空产生。这是一个贯穿全书的开放式追问，会在第11章和第20章回访。
+</div>
+
+<!-- ===== BOTTOM NAV ===== -->
+<div class="bottomnav">
+  <a href="03-gupiao-huibao.html">← 第3章：股票如何赚取回报</a>
+  <a href="05-dichengben.html">第5章：聚焦最低成本 →</a>
+</div>
+
+</div>
+
+<footer class="footer">
+  <p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p>
+</footer>
+
+<script>
+// ===== SIMULATOR LOGIC =====
+(function() {
+  const $ = id => document.getElementById(id);
+
+  const principalEl = $('principal');
+  const returnRateEl = $('returnRate');
+  const yearsEl = $('years');
+
+  const ACTIVE_FEE = 0.015;   // 1.5% 主动基金管理费
+  const INDEX_FEE  = 0.0015;  // 0.15% 指数基金管理费
+
+  function fmt(n) {
+    if (n >= 10000) return '¥' + (n / 10000).toFixed(1) + ' 万';
+    return '¥' + n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function fmtWan(n) {
+    return (n / 10000).toFixed(1) + ' 万';
+  }
+
+  function compound(p, r, fee, yrs) {
+    let val = p;
+    let totalFee = 0;
+    for (let y = 0; y < yrs; y++) {
+      const preFee = val * (1 + r/100);
+      const feeAmt = preFee * fee;
+      val = preFee - feeAmt;
+      totalFee += feeAmt;
+    }
+    return { final: val, fee: totalFee };
+  }
+
+  function update() {
+    const p = parseFloat(principalEl.value) * 10000;
+    const r = parseFloat(returnRateEl.value);
+    const yrs = parseInt(yearsEl.value);
+
+    // Update labels
+    $('principal-val').textContent = fmtWan(p);
+    $('return-val').textContent = r + '%';
+    $('years-val').textContent = yrs + ' 年';
+
+    // Compute
+    const active = compound(p, r, ACTIVE_FEE, yrs);
+    const index  = compound(p, r, INDEX_FEE, yrs);
+
+    // Update result cards
+    $('active-amount').textContent = fmt(active.final);
+    $('active-fee').textContent = '累计费用 ' + fmt(active.fee);
+    $('index-amount').textContent = fmt(index.final);
+    $('index-fee').textContent = '累计费用 ' + fmt(index.fee);
+
+    // Update highlight
+    const diff = index.final - active.final;
+    $('cost-drag').textContent = fmt(diff);
+    const pct = p > 0 ? ((diff / (index.final - p)) * 100).toFixed(0) : 0;
+    $('cost-drag-desc').textContent =
+      '主动基金多收的费用，占了指数基金总收益的 ' + pct + '%——这笔钱永远不会再回到你口袋里';
+
+    // Draw chart
+    drawChart(p, r, yrs);
+  }
+
+  function drawChart(p, r, yrs) {
+    const canvas = $('costChart');
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth;
+    const h = 300;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Clear
+    ctx.clearRect(0, 0, w, h);
+
+    const pad = { top: 30, right: 40, bottom: 50, left: 70 };
+    const pw = w - pad.left - pad.right;
+    const ph = h - pad.top - pad.bottom;
+
+    // Generate data points (every 5 years)
+    const dataActive = [];
+    const dataIndex = [];
+    let vA = p, vI = p;
+    const steps = [];
+    for (let y = 0; y <= yrs; y++) {
+      if (y % 5 === 0 || y === yrs) {
+        dataActive.push({ year: y, val: vA });
+        dataIndex.push({ year: y, val: vI });
+        steps.push(y);
+      }
+      if (y < yrs) {
+        vA = vA * (1 + r/100) * (1 - ACTIVE_FEE);
+        vI = vI * (1 + r/100) * (1 - INDEX_FEE);
+      }
+    }
+
+    // Find max value for scale
+    const allVals = dataActive.concat(dataIndex).map(d => d.val);
+    const maxVal = Math.max(...allVals);
+    const minVal = p;
+    const yRange = maxVal - minVal || 1;
+
+    function xPos(year) { return pad.left + (year / yrs) * pw; }
+    function yPos(val) { return pad.top + ph - ((val - minVal) / yRange) * ph; }
+
+    // Grid lines
+    ctx.strokeStyle = '#1f3050';
+    ctx.lineWidth = 0.5;
+    const gridLines = 5;
+    for (let i = 0; i <= gridLines; i++) {
+      const y = pad.top + (i / gridLines) * ph;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, y);
+      ctx.lineTo(w - pad.right, y);
+      ctx.stroke();
+      // Y-axis label
+      const val = minVal + (yRange * (gridLines - i) / gridLines);
+      ctx.fillStyle = '#8899aa';
+      ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(fmtWan(val), pad.left - 8, y + 4);
+    }
+
+    // X-axis labels
+    ctx.fillStyle = '#8899aa';
+    ctx.textAlign = 'center';
+    for (const s of steps) {
+      ctx.fillText(s + '年', xPos(s), pad.top + ph + 20);
+    }
+
+    // X-axis line
+    ctx.strokeStyle = '#3a5070';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top + ph);
+    ctx.lineTo(w - pad.right, pad.top + ph);
+    ctx.stroke();
+
+    // Y-axis line
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top);
+    ctx.lineTo(pad.left, pad.top + ph);
+    ctx.stroke();
+
+    // Draw lines and area fill
+    function drawCurve(data, color, fillColor) {
+      // Fill area
+      ctx.fillStyle = fillColor;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, pad.top + ph);
+      for (let i = 0; i < data.length; i++) {
+        ctx.lineTo(xPos(data[i].year), yPos(data[i].val));
+      }
+      ctx.lineTo(xPos(data[data.length-1].year), pad.top + ph);
+      ctx.closePath();
+      ctx.fill();
+
+      // Line
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i < data.length; i++) {
+        const px = xPos(data[i].year);
+        const py = yPos(data[i].val);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // End dot
+      const last = data[data.length - 1];
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(xPos(last.year), yPos(last.val), 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    drawCurve(dataActive, '#e94560', 'rgba(233,69,96,0.08)');
+    drawCurve(dataIndex, '#2ecc71', 'rgba(46,204,113,0.08)');
+
+    // Legend
+    const lx = w - pad.right - 180, ly = pad.top + 6;
+    ctx.fillStyle = '#e94560';
+    ctx.fillRect(lx, ly, 14, 14);
+    ctx.fillStyle = '#ccc';
+    ctx.font = '12px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('主动基金 (1.5%费)', lx + 20, ly + 12);
+
+    ctx.fillStyle = '#2ecc71';
+    ctx.fillRect(lx, ly + 22, 14, 14);
+    ctx.fillText('指数基金 (0.15%费)', lx + 20, ly + 34);
+
+    // Title
+    ctx.fillStyle = '#fff';
+    ctx.font = '13px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('资产增长对比', pad.left, pad.top - 8);
+  }
+
+  // Event listeners
+  [principalEl, returnRateEl, yearsEl].forEach(el => {
+    el.addEventListener('input', update);
+  });
+
+  // Resize handler
+  window.addEventListener('resize', () => {
+    const p = parseFloat(principalEl.value) * 10000;
+    const r = parseFloat(returnRateEl.value);
+    const yrs = parseInt(yearsEl.value);
+    drawChart(p, r, yrs);
+  });
+
+  // Initial render
+  update();
+})();
+</script>
+</body>
+</html>

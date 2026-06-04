@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10章：钟形曲线的右侧 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第10章：钟形曲线的右侧">
+<meta property="og:description" content="你千挑万选的基金经理，96%的概率10年后跑输大盘。但基金公司不会告诉你。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted); }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .roulette-area { text-align:center;margin:20px 0; }
+  .roulette-area canvas { max-width:100%; }
+  .btn-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0; }
+  .btn { padding:12px 24px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .btn:hover { border-color:var(--accent); }
+  .btn.primary { border-color:var(--accent2);background:rgba(233,69,96,.15); }
+  .btn.primary:hover { background:rgba(233,69,96,.25); }
+  .counter { text-align:center;font-size:24px;color:var(--gold);font-weight:700;margin:12px 0; }
+  .counter .small { font-size:13px;color:var(--muted);font-weight:400; }
+  .insight-box { background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.3);border-radius:10px;padding:16px 20px;text-align:center;margin-top:16px;font-size:14px;color:var(--gold);display:none; }
+  .insight-box.show { display:block; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 10 章 / 20</span>
+  <a href="11-xuanze-yingjia.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART III · CHAPTER 10</div>
+  <h1>钟形曲线的右侧</h1>
+  <div class="en-title">The Right-Hand Side of the Bell Curve</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">你千挑万选的基金经理，有96%的概率在10年后跑输大盘。但如果你是基金公司，你会告诉投资者"你很可能在那96%里"吗？不会——你会告诉他"看看这个5年翻倍的明星经理"。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 基金公司的营销让你相信"选对经理就能赢"。但钟形曲线告诉我们，<strong>绝大多数经理聚集在平均线附近，右侧持续超额的人少到几乎不存在</strong>。问题是：幸存者偏差和营销话术，让你只看到了那极少数的"右侧"案例。</div>
+</div>
+
+<div class="sim-card" id="sim-bell">
+  <h3>🎮 基金经理大转盘</h3>
+  <p class="sim-desc">下面有100个虚拟基金经理，他们的长期业绩服从钟形分布。点"选一个"看看你抽到的是谁——多试几次，看你能找到几个跑赢大盘的。</p>
+
+  <div class="roulette-area">
+    <canvas id="bellCanvas" width="700" height="320"></canvas>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn primary" id="btn-pick">🎯 选一个基金经理</button>
+    <button class="btn" id="btn-reset">🔄 重新洗牌</button>
+  </div>
+
+  <div class="counter">已尝试：<span id="pick-count">0</span> 次 &nbsp;|&nbsp; 跑赢大盘：<span id="win-count" style="color:#2ecc71">0</span> 次 &nbsp;|&nbsp; 跑赢率：<span id="win-rate" style="color:#f0a500">0%</span></div>
+
+  <div class="insight-box" id="insight">
+    💡 你试了20次以上。在这100个经理中，真正能持续跑赢大盘（年化超额&gt;1%）的只有不到5个人。这就是博格想说的——选到赢家的概率比你想象的小得多。
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>什么是"幸存者偏差"？它如何误导我们判断基金经理的能力？</li>
+    <li>❓ <strong>Question：</strong>你最近一次选基金时，是基于什么标准？排名？评级？朋友推荐？</li>
+    <li>🪞 <strong>Reflect：</strong>数据显示96%的主动基金跑输指数——你凭什么觉得自己正好挑中那4%？</li>
+    <li>🗣️ <strong>Recite：</strong>"选基金经理就像在稻草堆里找一根针——而那根针可能根本就不存在。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>A股因为散户比例高（约80%），主动基金跑赢指数的比例确实高于美股。但这里有一个危险的陷阱：跑赢的钱是散户亏掉的。如果未来A股"去散户化"（这是确定趋势），主动基金的超额收益也会回归到美股水平——甚至更差。你愿意赌这个"超额窗口"还能开多久？
+</div>
+
+<div class="bottomnav">
+  <a href="09-zichan-peizhi.html">← 第9章：资产配置</a>
+  <a href="11-xuanze-yingjia.html">第11章：选择长期赢家 →</a>
+</div>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('bellCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const N_MANAGERS = 100;
+  const MARKET_RETURN = 7;
+  let managers = [];
+  let picks = [], pickCount = 0, winCount = 0;
+  let highlighted = -1;
+
+  function generateManagers() {
+    managers = [];
+    for (let i = 0; i < N_MANAGERS; i++) {
+      // Normal distribution around market return, std dev ~1.8%
+      const u1 = Math.random(), u2 = Math.random();
+      const z = Math.sqrt(-2*Math.log(u1 || 0.0001)) * Math.cos(2*Math.PI*u2);
+      const alpha = z * 1.8; // annual excess return
+      const fee = 0.01 + Math.random() * 0.02; // 1-3% fee
+      const netReturn = MARKET_RETURN + alpha - fee * 100;
+      managers.push({ id: i, alpha, fee, netReturn, picked: false });
+    }
+    // Sort by net return
+    managers.sort((a, b) => a.netReturn - b.netReturn);
+    picks = []; pickCount = 0; winCount = 0; highlighted = -1;
+    $('pick-count').textContent = '0';
+    $('win-count').textContent = '0';
+    $('win-rate').textContent = '0%';
+    $('insight').classList.remove('show');
+  }
+
+  function drawBell() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = 320;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const pad = { top:20, right:30, bottom:60, left:60 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+
+    // x = netReturn, y = count (histogram)
+    const minR = Math.min(...managers.map(m => m.netReturn)) - 1;
+    const maxR = Math.max(...managers.map(m => m.netReturn)) + 1;
+    const rRange = maxR - minR || 1;
+    function xPos(r) { return pad.left + ((r - minR) / rRange) * pw; }
+    function yPos(count) { return pad.top + ph - (count / 20) * ph; }
+
+    // Histogram bins
+    const binWidth = 0.8;
+    const bins = {};
+    managers.forEach(m => {
+      const bin = Math.floor(m.netReturn / binWidth) * binWidth;
+      bins[bin] = (bins[bin] || 0) + 1;
+    });
+
+    const maxCount = Math.max(...Object.values(bins));
+
+    // Grid
+    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 5; i++) {
+      const y = pad.top + (i/5)*ph;
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
+      ctx.fillStyle = '#8899aa'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(Math.round(maxCount*(5-i)/5), pad.left-6, y+4);
+    }
+    ctx.fillStyle = '#8899aa'; ctx.textAlign = 'center';
+    for (let r = Math.ceil(minR); r <= Math.floor(maxR); r++) {
+      ctx.fillText(r.toFixed(0)+'%', xPos(r), pad.top+ph+16);
+    }
+
+    // X-axis label
+    ctx.fillText('年化净回报 →', w/2, pad.top+ph+38);
+
+    // Draw histogram bars
+    for (const [bin, count] of Object.entries(bins)) {
+      const bx = xPos(parseFloat(bin));
+      const bw = pw * binWidth / rRange;
+      const bh = (count / maxCount) * ph * 0.95;
+
+      // determine color: if this bin contains the highlighted manager
+      let isHighlightBin = false;
+      if (highlighted >= 0 && highlighted < managers.length) {
+        const mBin = Math.floor(managers[highlighted].netReturn / binWidth) * binWidth;
+        isHighlightBin = parseFloat(bin) === mBin;
+      }
+
+      ctx.fillStyle = isHighlightBin ? '#f0a500' : '#0f3460';
+      ctx.fillRect(bx, pad.top + ph - bh, Math.max(bw-1, 1), bh);
+      ctx.strokeStyle = isHighlightBin ? '#f0a500' : '#1f3050';
+      ctx.lineWidth = 0.5;
+      ctx.strokeRect(bx, pad.top + ph - bh, Math.max(bw-1, 1), bh);
+    }
+
+    // Bell curve overlay
+    ctx.strokeStyle = '#e94560'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let x = 0; x <= pw; x+=2) {
+      const r = minR + (x/pw) * rRange;
+      const z = (r - MARKET_RETURN) / 2;
+      const density = Math.exp(-z*z/2) * 0.85 * maxCount;
+      const px = pad.left + x;
+      const py = pad.top + ph - (density / maxCount) * ph;
+      x === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // Market return line
+    const mx = xPos(MARKET_RETURN);
+    ctx.strokeStyle = '#2ecc71'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(mx, pad.top); ctx.lineTo(mx, pad.top+ph); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#2ecc71'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('大盘回报 ' + MARKET_RETURN + '%', mx, pad.top - 4);
+
+    // Highlight dot for picked manager
+    if (highlighted >= 0 && highlighted < managers.length) {
+      const m = managers[highlighted];
+      const px = xPos(m.netReturn), py = pad.top + ph - 10;
+      ctx.fillStyle = '#f0a500';
+      ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI*2); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI*2); ctx.stroke();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 12px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.fillText('你选的 → 净回报 ' + m.netReturn.toFixed(1) + '%', px + 40, py + 4);
+    }
+
+    // Legend
+    ctx.fillStyle = '#e94560'; ctx.fillRect(w-170, pad.top+6, 14, 14);
+    ctx.fillStyle = '#ccc'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('钟形分布', w-152, pad.top+18);
+    ctx.fillStyle = '#2ecc71'; ctx.fillRect(w-170, pad.top+26, 2, 14);
+    ctx.fillText('大盘回报线', w-152, pad.top+38);
+  }
+
+  function pickManager() {
+    pickCount++;
+    const idx = Math.floor(Math.random() * N_MANAGERS);
+    const m = managers[idx];
+    highlighted = idx;
+    if (m.netReturn > MARKET_RETURN) winCount++;
+
+    $('pick-count').textContent = pickCount;
+    $('win-count').textContent = winCount;
+    $('win-rate').textContent = pickCount > 0 ? (winCount/pickCount*100).toFixed(1) + '%' : '0%';
+
+    if (pickCount >= 20) $('insight').classList.add('show');
+
+    picks.push(m);
+    drawBell();
+  }
+
+  $('btn-pick').addEventListener('click', pickManager);
+  $('btn-reset').addEventListener('click', () => {
+    generateManagers();
+    drawBell();
+  });
+
+  window.addEventListener('resize', drawBell);
+  generateManagers();
+  drawBell();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7章：当好时光不再 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第7章：当好时光不再">
+<meta property="og:description" content="1929年最高点买入需21年回本——但如果持续买入，年化回报超5%。最差的时间买入，最好的策略是继续买。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted);line-height:1.6; }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .btn-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px; }
+  .btn { padding:12px 20px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .btn:hover { border-color:var(--accent); }
+  .btn.active { border-color:var(--gold);background:rgba(240,165,0,.15); }
+  .chart-wrap { margin:24px 0;text-align:center; }
+  .chart-wrap canvas { max-width:100%; }
+  .result-row { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px; }
+  @media (max-width:550px) { .result-row { grid-template-columns:1fr; } }
+  .res-card { border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border); }
+  .res-card.sell { background:rgba(233,69,96,.1);border-color:var(--accent2); }
+  .res-card.hold { background:rgba(240,165,0,.1);border-color:var(--gold); }
+  .res-card.dca { background:rgba(46,204,113,.1);border-color:var(--green); }
+  .res-card .rl { font-size:12px;color:var(--muted); }
+  .res-card .rv { font-size:20px;font-weight:700;color:#fff;margin-top:4px; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 7 章 / 20</span>
+  <a href="08-zhaiquan.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART II · CHAPTER 7</div>
+  <h1>当好时光不再</h1>
+  <div class="en-title">When the Good Times No Longer Roll</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">假设你在2007年A股6124点的最高峰买入，到现在还没回本。但如果你从那天起每个月坚持定投，你的年化回报反而超过5%。最差的时间点买入，最好的应对策略不是跑——而是继续买。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 人的本能是"跌了就跑"。但历史一次又一次证明：<strong>大跌时持续买入（定投），是长期收益的最大来源之一</strong>。亏损本身不可怕，可怕的是在亏损时停止买入——你锁定了亏损，又错过了低位的筹码。牛市赚钱，熊市赚股。</div>
+</div>
+
+<div class="sim-card" id="sim-bear">
+  <h3>🎮 熊市穿越模拟器</h3>
+  <p class="sim-desc">市场从高点暴跌50%。你会做什么？选一种策略，看10年后的结果。</p>
+
+  <div class="btn-row" id="strategy-btns">
+    <button class="btn" data-strategy="sell">😱 恐慌抛售</button>
+    <button class="btn active" data-strategy="dca">💪 持续定投</button>
+    <button class="btn" data-strategy="hold">😐 持有不动</button>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="bearChart" width="700" height="300"></canvas>
+  </div>
+
+  <div class="result-row">
+    <div class="res-card sell"><div class="rl">恐慌抛售</div><div class="rv" id="r-sell">¥ ---</div></div>
+    <div class="res-card hold"><div class="rl">持有不动</div><div class="rv" id="r-hold">¥ ---</div></div>
+    <div class="res-card dca"><div class="rl">持续定投</div><div class="rv" id="r-dca">¥ ---</div></div>
+  </div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>博格为什么说"当好时光"是一种幻觉，均值回归才是常态？</li>
+    <li>❓ <strong>Question：</strong>你经历过最大的市场下跌是多少？当时你做了什么？</li>
+    <li>🪞 <strong>Reflect：</strong>如果明天你的账户跌了30%，你能做到不卖吗？如果做不到，你的资产配置可能出了问题。</li>
+    <li>🗣️ <strong>Recite：</strong>"牛市赚钱，熊市赚股。最怕的不是暴跌，是暴跌时你不在场。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>A股历史上经历过2008年（-65%）、2015年（-45%）、2018年（-25%）、2022年（-22%）的重大回撤。每次暴跌后，定投者的回报都显著好于一次性买入者和恐慌抛售者。A股"牛短熊长"的特性，恰好让定投的优势被放大。
+</div>
+
+<div class="bottomnav">
+  <a href="06-shuishou.html">← 第6章：税收也是成本</a>
+  <a href="08-zhaiquan.html">第8章：选择合理的债券基金 →</a>
+</div>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('bearChart');
+  const ctx = canvas.getContext('2d');
+  let strategy = 'dca';
+
+  function fmt(n) { return '¥' + (n/10000).toFixed(1) + ' 万'; }
+
+  function simulate() {
+    const initialInvestment = 100000;
+    const monthlyDca = 2000;
+    const yrs = 12;
+    const months = yrs * 12;
+
+    // Simulated market: starts at 5000, crashes to 2500 in year 1, then slowly recovers
+    const prices = [];
+    for (let m = 0; m <= months; m++) {
+      const yr = m / 12;
+      let price;
+      if (yr <= 1) price = 5000 - 2500 * yr; // crash
+      else price = 2500 + 2000 * (1 - Math.exp(-0.15 * (yr - 1))); // recovery curve
+      price += (Math.sin(yr * 1.7) * 150); // noise
+      prices.push(Math.max(price, 1500));
+    }
+
+    // Strategy: sell (sell at bottom, buy back at recovery)
+    const sellPrice = prices[12]; // sell at month 12 (bottom)
+    const buybackPrice = prices[Math.floor(months * 0.6)]; // buy back later
+    const sellFinal = (initialInvestment * sellPrice / prices[0]) * (buybackPrice / sellPrice) * 0.995;
+
+    // Strategy: hold
+    const holdFinal = initialInvestment * prices[months] / prices[0];
+
+    // Strategy: DCA
+    let dcaShares = 0, dcaInvested = 0;
+    for (let m = 0; m < months; m++) {
+      if (m === 0) { dcaShares += initialInvestment / prices[0]; dcaInvested += initialInvestment; }
+      else { dcaShares += monthlyDca / prices[m]; dcaInvested += monthlyDca; }
+    }
+    const dcaFinal = dcaShares * prices[months];
+
+    return { sellFinal, holdFinal, dcaFinal, dcaInvested, prices };
+  }
+
+  function drawChart(result) {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = 300;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const pad = { top:30, right:40, bottom:50, left:70 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+    const prices = result.prices;
+    const maxPrice = Math.max(...prices), minPrice = Math.min(...prices);
+    const pRange = maxPrice - minPrice || 1;
+
+    function xPos(m) { return pad.left + (m/prices.length)*pw; }
+    function yPos(p) { return pad.top + ph - ((p-minPrice)/pRange)*ph; }
+
+    // Crash zone
+    ctx.fillStyle = 'rgba(233,69,96,0.06)';
+    ctx.fillRect(pad.left, pad.top, xPos(12) - pad.left, ph);
+
+    // Price line
+    ctx.strokeStyle = '#8899aa'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let i = 0; i < prices.length; i += 3) {
+      const px = xPos(i), py = yPos(prices[i]);
+      i === 0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+    }
+    ctx.stroke();
+
+    // Strategy result lines
+    const initialVal = 100000;
+    const maxFinal = Math.max(result.sellFinal, result.holdFinal, result.dcaFinal, initialVal * 2);
+    const vScale = (ph * 0.3) / (maxFinal - initialVal || 1);
+
+    const strategies = [
+      { name: '恐慌抛售', val: result.sellFinal, color: '#e94560' },
+      { name: '持有不动', val: result.holdFinal, color: '#f0a500' },
+      { name: '持续定投', val: result.dcaFinal, color: '#2ecc71' },
+    ];
+
+    const barW = Math.min(50, pw / 8);
+    const startX = w - pad.right - (barW*3 + 20*2);
+    strategies.forEach((s, i) => {
+      const x = startX + i * (barW + 20);
+      const barH = (s.val - initialVal) * vScale;
+      const y = yPos(prices[prices.length-1]) - barH/2;
+      ctx.fillStyle = s.color;
+      ctx.globalAlpha = strategy === (i===0?'sell':i===1?'hold':'dca') ? 1 : 0.4;
+      ctx.fillRect(x, yPos(prices[prices.length-1]) - barH, barW, Math.max(barH, 10));
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = '#fff'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(s.name, x + barW/2, yPos(prices[prices.length-1]) + 16);
+      ctx.fillText(fmt(s.val), x + barW/2, yPos(prices[prices.length-1]) - barH - 8);
+    });
+
+    // Y-axis labels (price)
+    ctx.fillStyle = '#8899aa'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+    for (let i = 0; i <= 4; i++) {
+      const p = minPrice + pRange * (4-i)/4;
+      ctx.fillText(p.toFixed(0), pad.left - 8, pad.top + (i/4)*ph + 4);
+    }
+    ctx.fillStyle = '#8899aa'; ctx.textAlign = 'center';
+    for (let y = 0; y <= 12; y+=2) ctx.fillText(y+'年', xPos(y*12), pad.top+ph+18);
+
+    // Labels
+    ctx.fillStyle = '#e94560'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('← 暴跌区', xPos(6), pad.top + 14);
+    ctx.fillStyle = '#2ecc71';
+    ctx.fillText('恢复区 →', xPos(36), pad.top + 14);
+
+    // Title
+    ctx.fillStyle = '#fff'; ctx.font = '13px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.fillText('市场走势（虚线=暴跌区）', pad.left, pad.top - 8);
+  }
+
+  function update() {
+    const result = simulate();
+    $('r-sell').textContent = fmt(result.sellFinal);
+    $('r-hold').textContent = fmt(result.holdFinal);
+    $('r-dca').textContent = fmt(result.dcaFinal);
+    drawChart(result);
+  }
+
+  $('strategy-btns').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    document.querySelectorAll('#strategy-btns button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    strategy = btn.dataset.strategy;
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

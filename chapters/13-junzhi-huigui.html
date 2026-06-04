@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第13章：均值回归 | 《长赢投资》同伴手册</title>
+<meta property="og:title" content="第13章：均值回归">
+<meta property="og:description" content="树不会长到天上去——极高回报后面跟着低回报，不是可能，是一定。">
+<style>
+  :root { --bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--accent2:#e94560;--gold:#f0a500;--text:#e0e0e0;--muted:#8899aa;--border:#1f3050;--green:#2ecc71; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;min-height:100vh; }
+  .topnav { display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(15,52,96,.5);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px); }
+  .topnav a { color:var(--muted);text-decoration:none;font-size:13px; }
+  .topnav a:hover { color:#fff; }
+  .topnav .chap-indicator { font-size:13px;color:var(--gold); }
+  .container { max-width:800px;margin:0 auto;padding:24px 20px 40px; }
+  .ch-header { text-align:center;margin-bottom:32px; }
+  .ch-header .ch-num { font-size:13px;color:var(--accent2);letter-spacing:2px; }
+  .ch-header h1 { font-size:clamp(22px,4vw,30px);color:#fff;margin:6px 0 4px; }
+  .ch-header .en-title { font-size:13px;color:var(--muted);font-style:italic; }
+  .hook-block { background:linear-gradient(135deg,#1a1030,#201835);border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px; }
+  .hook-block .hook-quote { font-size:20px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px; }
+  .hook-block .hook-quote::before { content:"💡 "; }
+  .hook-block .hook-why { font-size:14px;color:var(--muted); }
+  .hook-block .hook-why strong { color:var(--accent2); }
+  .sim-card { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:32px; }
+  .sim-card h3 { font-size:18px;color:#fff;margin-bottom:6px; }
+  .sim-card .sim-desc { font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .chart-wrap { text-align:center;margin:16px 0; }
+  .chart-wrap canvas { max-width:100%; }
+  .btn-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0; }
+  .btn { padding:10px 20px;border:2px solid var(--border);border-radius:10px;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit; }
+  .btn:hover { border-color:var(--accent); }
+  .btn.primary { border-color:var(--accent2);background:rgba(233,69,96,.15); }
+  .phase-info { text-align:center;font-size:14px;color:var(--muted);margin-bottom:16px; }
+  .pq4r-block { background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px; }
+  .pq4r-block h3 { font-size:16px;color:#fff;margin-bottom:12px; }
+  .pq4r-block ul { list-style:none;padding:0; }
+  .pq4r-block ul li { padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc; }
+  .ashare-note { background:rgba(15,52,96,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);margin-bottom:24px; }
+  .ashare-note strong { color:var(--gold); }
+  .bottomnav { display:flex;justify-content:space-between;margin-bottom:24px; }
+  .bottomnav a { color:var(--muted);text-decoration:none;font-size:14px;padding:10px 18px;border:1px solid var(--border);border-radius:8px;transition:all .15s; }
+  .bottomnav a:hover { border-color:var(--accent);color:#fff; }
+  .footer { text-align:center;padding:24px;color:var(--muted);font-size:12px; }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="../index.html">← 返回目录</a>
+  <span class="chap-indicator">第 13 章 / 20</span>
+  <a href="14-xunqiu-jianyi.html">下一章 →</a>
+</nav>
+<div class="container">
+<div class="ch-header">
+  <div class="ch-num">PART III · CHAPTER 13</div>
+  <h1>均值回归</h1>
+  <div class="en-title">Reversion to the Mean</div>
+</div>
+
+<div class="hook-block">
+  <div class="hook-quote">如果你只能记住投资里的一条规律，应该是这一条：树不会长到天上去。所有超额收益最终都会回到平均水平——不是可能，是一定。极高的回报后面跟着低回报，极低的回报后面跟着补偿性的高回报。这是投资最接近物理定律的事。</div>
+  <div class="hook-why"><strong>为什么这个观点反常识？</strong> 涨了就想追，跌了就想跑——这是刻在人类DNA里的反应。但均值回归告诉你：<strong>做到"逆人性"的人才能赚钱</strong>。涨了很多的东西，未来回报大概率降低；跌了很多的东西，未来回报大概率提升。不是预测，是统计规律。</div>
+</div>
+
+<div class="sim-card" id="sim-reversion">
+  <h3>🎮 均值回归演示器</h3>
+  <p class="sim-desc">橘色点代表不同基金的年回报率。点"推进时间"，看极端值如何被引力拉回均值。</p>
+
+  <div class="chart-wrap">
+    <canvas id="revertChart" width="700" height="340"></canvas>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn primary" id="btn-step">⏩ 推进一年</button>
+    <button class="btn" id="btn-auto">▶️ 自动推进</button>
+    <button class="btn" id="btn-reset">🔄 重置</button>
+  </div>
+  <div class="phase-info">第 <span id="step-num">0</span> 年  |  <span id="status-msg">点击"推进一年"开始</span></div>
+</div>
+
+<div class="pq4r-block">
+  <h3>📖 阅读思考</h3>
+  <ul>
+    <li>🔍 <strong>Preview：</strong>均值回归在投资中有哪些具体表现？（提示：行业回报、基金排名、估值水平、经济增长）</li>
+    <li>❓ <strong>Question：</strong>上次你买了一只"涨了好多"的基金——当时你有没有想过"均值回归"这个词？</li>
+    <li>🪞 <strong>Reflect：</strong>博格的投资哲学本质上是"接受均值回报"——你愿意放弃追逐超额回报的幻想吗？</li>
+    <li>🗣️ <strong>Recite：</strong>"为什么去年最好的基金今年大概率变差？因为均值回归像重力一样不可抗拒。"</li>
+  </ul>
+</div>
+
+<div class="ashare-note">
+  <strong>🇨🇳 A股视角：</strong>A股由于高波动特征，均值回归的力量格外猛烈。2015年创业板PE炒到140倍（极高），随后4年跌去70%；2018年底沪深300 PE跌到10倍（极低），随后2年涨超70%。A股的均值回归周期通常比美股更短、更剧烈——既是风险，也是机会。
+</div>
+
+<div class="bottomnav">
+  <a href="12-zuori-yingjia.html">← 第12章：昨日赢家，明日输家</a>
+  <a href="14-xunqiu-jianyi.html">第14章：寻求投资建议？ →</a>
+</nav>
+</div>
+<footer class="footer"><p>《长赢投资》同伴手册 · 纯浏览器运行 · 零数据收集</p></footer>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const canvas = $('revertChart');
+  const ctx = canvas.getContext('2d');
+  const MEAN = 7;
+  const N_POINTS = 15;
+  const MAX_YEARS = 8;
+
+  let year = 0;
+  let history = []; // history[year][pointIdx] = return value
+  let autoTimer = null;
+
+  function initHistory() {
+    history = [];
+    const initial = [];
+    for (let i = 0; i < N_POINTS; i++) {
+      // Spread points across return spectrum
+      const extreme = (Math.random() - 0.5) * 2;
+      const val = MEAN + extreme * 12; // -5% to +19% range
+      initial.push(Math.max(-20, Math.min(30, val)));
+    }
+    history.push(initial);
+    year = 0;
+  }
+
+  function stepForward() {
+    if (year >= MAX_YEARS) return;
+    const prev = history[history.length - 1];
+    const next = prev.map(v => {
+      const pull = (MEAN - v) * 0.35; // mean reversion force
+      const noise = (Math.random() - 0.5) * 4; // random noise
+      return Math.max(-20, Math.min(30, v + pull + noise));
+    });
+    history.push(next);
+    year++;
+    $('step-num').textContent = year;
+
+    if (year >= 3) {
+      const latestExtreme = Math.max(...next.map(v => Math.abs(v - MEAN)));
+      if (latestExtreme < 5) {
+        $('status-msg').textContent = '极端值已经基本回归均值——正如博格预测的那样。';
+      } else {
+        $('status-msg').textContent = '回归仍在进行中。越极端的值，回归得越快。';
+      }
+    } else {
+      $('status-msg').textContent = '观察那些远离均值(7%)的点——它们正在被"引力"拉回来。';
+    }
+
+    drawChart();
+  }
+
+  function drawChart() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = 340;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    const pad = { top:30, right:30, bottom:50, left:65 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+
+    const minR = -20, maxR = 30, rRange = maxR - minR;
+    function xPos(yr) { return pad.left + (yr/MAX_YEARS)*pw; }
+    function yPos(r) { return pad.top + ph - ((r-minR)/rRange)*ph; }
+
+    // Grid
+    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 5; i++) {
+      const y = pad.top + (i/5)*ph;
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
+      ctx.fillStyle = '#8899aa'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText((maxR - rRange*i/5).toFixed(0)+'%', pad.left-6, y+4);
+    }
+    ctx.fillStyle = '#8899aa'; ctx.textAlign = 'center';
+    for (let yr = 0; yr <= MAX_YEARS; yr++) {
+      ctx.fillText('第'+yr+'年', xPos(yr), pad.top+ph+18);
+    }
+
+    // Mean line
+    const my = yPos(MEAN);
+    ctx.strokeStyle = '#2ecc71'; ctx.lineWidth = 1.5; ctx.setLineDash([5,5]);
+    ctx.beginPath(); ctx.moveTo(pad.left, my); ctx.lineTo(w-pad.right, my); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#2ecc71'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('均值 7%', pad.left + 4, my - 5);
+
+    // Draw trajectories for each point
+    const colors = ['#e94560','#f0a500','#e74c3c','#f39c12','#e67e22',
+                    '#3498db','#2ecc71','#1abc9c','#9b59b6','#00bcd4'];
+
+    for (let p = 0; p < N_POINTS; p++) {
+      const color = colors[p % colors.length];
+      const points = history.map((yrData, yrIdx) => ({
+        x: xPos(yrIdx),
+        y: yPos(yrData[p])
+      }));
+
+      if (points.length < 2) continue;
+
+      // Line
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+      ctx.globalAlpha = 0.7;
+      ctx.beginPath();
+      points.forEach((pt, i) => {
+        i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
+      });
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // Current position dot
+      const curr = points[points.length - 1];
+      const isExtreme = Math.abs(history[history.length-1][p] - MEAN) > 8;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(curr.x, curr.y, isExtreme ? 6 : 4, 0, Math.PI*2);
+      ctx.fill();
+      if (isExtreme) {
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(curr.x, curr.y, 6, 0, Math.PI*2); ctx.stroke();
+      }
+    }
+
+    // Upper and lower bounds
+    ctx.strokeStyle = 'rgba(136,153,170,0.3)'; ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.moveTo(pad.left, yPos(MEAN+12)); ctx.lineTo(w-pad.right, yPos(MEAN+12)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.left, yPos(MEAN-12)); ctx.lineTo(w-pad.right, yPos(MEAN-12)); ctx.stroke();
+
+    ctx.fillStyle = '#8899aa'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('极端高区', w-pad.right-55, yPos(MEAN+12)-4);
+    ctx.fillText('极端低区', w-pad.right-55, yPos(MEAN-12)-4);
+  }
+
+  function reset() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    initHistory();
+    year = 0;
+    $('step-num').textContent = '0';
+    $('status-msg').textContent = '点击"推进一年"开始';
+    $('btn-auto').textContent = '▶️ 自动推进';
+    drawChart();
+  }
+
+  $('btn-step').addEventListener('click', stepForward);
+  $('btn-auto').addEventListener('click', () => {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+      $('btn-auto').textContent = '▶️ 自动推进';
+    } else {
+      $('btn-auto').textContent = '⏸️ 停止';
+      autoTimer = setInterval(() => {
+        if (year >= MAX_YEARS) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+          $('btn-auto').textContent = '▶️ 自动推进';
+          return;
+        }
+        stepForward();
+      }, 800);
+    }
+  });
+  $('btn-reset').addEventListener('click', reset);
+
+  window.addEventListener('resize', drawChart);
+  reset();
+})();
+</script>
+</body>
+</html>
