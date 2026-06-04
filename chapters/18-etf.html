@@ -140,7 +140,7 @@
   function update() {
     const holderTrades = 1; // 2 trades every 2 years
     const traderTrades = 24; // 2 trades per month
-    const costPerTrade = 30; // ~¥30 per trade (commission + spread + stamp)
+    const costPerTrade = 8; // ~¥8 per ¥1万交易 (佣金万2.5+价差, ETF免印花税) (commission + spread + stamp)
 
     const holder = compound(initial, marketReturn, holderTrades, costPerTrade, 30);
     const trader = compound(initial, marketReturn, traderTrades, costPerTrade, 30);

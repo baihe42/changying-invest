@@ -75,7 +75,7 @@
 
 <div class="sim-card" id="sim-parallel">
   <h3>🎮 平行宇宙计算器</h3>
-  <p class="sim-desc">左边是有博格的宇宙（你能买到0.03%费率的指数基金），右边是平行宇宙（最低费率1.5%）。拖动滑块看看差距。</p>
+  <p class="sim-desc">左边是有博格的宇宙（你能买到0.15%费率的指数基金），右边是平行宇宙（最低费率1.5%）。拖动滑块看看差距。</p>
 
   <div class="ctrl-group">
     <label>每月定投金额 <span class="val" id="m-val">¥2,000</span></label>
@@ -94,7 +94,7 @@
     <div class="universe-card our">
       <div class="ul">🌍 我们的宇宙</div>
       <div class="uv" id="our-result">¥ ---</div>
-      <div class="uf">有博格 · 指数基金费率 0.03%</div>
+      <div class="uf">有博格 · 指数基金费率 0.15%</div>
     </div>
     <div class="universe-card other">
       <div class="ul">🌑 平行宇宙</div>
@@ -115,7 +115,7 @@
     <li>🔍 <strong>Preview：</strong>博格创立先锋领航的历史背景是什么？他在这个过程中付出了什么代价？</li>
     <li>❓ <strong>Question：</strong>如果没有指数基金，你现在会怎么投资？</li>
     <li>🪞 <strong>Reflect：</strong>博格的"反叛"不是为了自己赚钱（先锋是客户拥有的公司），而是出于一种信念——这让你想到什么？</li>
-    <li>🗣️ <strong>Recite：</strong>"你今天能买到0.03%管理费的指数基金，是因为1975年有个人愿意被整个行业嘲笑。"</li>
+    <li>🗣️ <strong>Recite：</strong>"你今天能买到0.15%管理费的指数基金，是因为1975年有个人愿意被整个行业嘲笑。"</li>
   </ul>
 </div>
 
@@ -133,7 +133,7 @@
 <script>
 (function() {
   const $ = id => document.getElementById(id);
-  const OUR_FEE = 0.0003, OTHER_FEE = 0.015;
+  const OUR_FEE = 0.0015, OTHER_FEE = 0.015;
 
   function fmt(n) { return '¥' + (n/10000).toFixed(1) + ' 万'; }
   function compoundDCA(monthly, r, fee, yrs) {

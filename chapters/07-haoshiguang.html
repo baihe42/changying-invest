@@ -139,10 +139,11 @@
       prices.push(Math.max(price, 1500));
     }
 
-    // Strategy: sell (sell at bottom, buy back at recovery)
-    const sellPrice = prices[12]; // sell at month 12 (bottom)
-    const buybackPrice = prices[Math.floor(months * 0.6)]; // buy back later
-    const sellFinal = (initialInvestment * sellPrice / prices[0]) * (buybackPrice / sellPrice) * 0.995;
+    // Strategy: sell (panic sell at bottom, buy back later, hold to end)
+    const sellPrice = prices[12]; // sell at month 12 (market bottom)
+    const buybackPrice = prices[Math.floor(months * 0.6)]; // buy back at month 86 (~7yr)
+    // 买入股份 → 底部卖出(扣0.5%) → 回升后买回(扣0.5%) → 持有到终点
+    const sellFinal = (initialInvestment / prices[0]) * sellPrice * 0.995 / buybackPrice * 0.995 * prices[months];
 
     // Strategy: hold
     const holdFinal = initialInvestment * prices[months] / prices[0];

@@ -121,8 +121,8 @@
   function initActive() {
     activePositions = [];
     for (let i = 0; i < N_ACTIVE; i++) {
-      // Random starting positions around 50
-      activePositions.push(50 + (Math.random() - 0.5) * 30);
+      // 主动基金初始位置散布在指数附近
+      activePositions.push(15 + (Math.random() - 0.5) * 20);
     }
   }
 
@@ -130,18 +130,14 @@
     if (year >= TOTAL_YEARS) return;
     year = Math.min(year + 5, TOTAL_YEARS);
 
-    // Index steadily advances
-    const indexReturn = 7; // annual
-    indexPos = 50 * Math.pow(1 + indexReturn/100, year) / Math.pow(1 + indexReturn/100, year) * 80 + 10;
-
-    // Normalize: index goes from 50 to ~80% of track over 30 years
+    // 指数从15%稳步推进到80%
     const indexProgress = year / TOTAL_YEARS;
     indexPos = 15 + indexProgress * 65;
 
-    // Active funds: random walk with negative drift (fees)
+    // 主动基金：随机游走带费用拖累
     activePositions = activePositions.map((pos, i) => {
-      const fee = 1.0 + Math.random() * 1.5; // 1-2.5% fee drag
-      const skill = (Math.random() - 0.45) * 3; // slight negative bias
+      const fee = 1.0 + Math.random() * 1.5; // 1-2.5% 年费用拖累
+      const skill = (Math.random() - 0.45) * 3; // 轻微负偏
       const annualMove = skill - fee;
       return Math.max(2, Math.min(95, pos + annualMove * 5));
     });
@@ -182,7 +178,7 @@
 
   function reset() {
     year = 0;
-    indexPos = 50;
+    indexPos = 15;
     initActive();
     render();
   }

@@ -131,7 +131,7 @@
     if (year >= MAX_YEARS) return;
     const prev = history[history.length - 1];
     const next = prev.map(v => {
-      const pull = (MEAN - v) * 0.35; // mean reversion force
+      const pull = (MEAN - v) * 0.15; // ~15% annual mean reversion (empirically realistic) // mean reversion force
       const noise = (Math.random() - 0.5) * 4; // random noise
       return Math.max(-20, Math.min(30, v + pull + noise));
     });

@@ -159,7 +159,7 @@
 
     shuffleRankings();
 
-    if (yearNum >= 3 && championId >= 0) {
+    if (false && yearNum >= 3 && championId >= 0) {
       const newPos = rankings.indexOf(championId);
       if (newPos >= 5 || newPos < 0) {
         championGone = true;
@@ -169,7 +169,7 @@
       }
     }
 
-    if (yearNum > 3 && championGone) {
+    if (false && yearNum > 3 && championGone) {
       // Ensure champion stays out of top 5
       const cp = rankings.indexOf(championId);
       if (cp >= 0 && cp < 5 && cp < rankings.length) {

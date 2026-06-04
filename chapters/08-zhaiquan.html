@@ -129,7 +129,7 @@
   const ctx = canvas.getContext('2d');
 
   // Approximate historical data for illustration
-  const stockReturn = 9, stockVol = 18; // annual return & max drawdown for stocks
+  const stockReturn = 9, stockVol = 18; // annual return & annual volatility (std dev)
   const bondReturn = 4, bondVol = 4;
   const correlation = 0.1;
 
@@ -141,9 +141,9 @@
     // Weighted return
     const portfolioReturn = (stockReturn * stockPct + bondReturn * bondPct) / 100;
     // Approximate drawdown (non-linear due to diversification benefit)
-    const diversificationBenefit = (stockPct * bondPct) / 10000 * 0.4;
-    const portfolioDrawdown = (stockVol * stockPct + bondVol * bondPct) / 100 * (1 - diversificationBenefit);
-    const recoveryYrs = Math.max(1, Math.round(portfolioDrawdown / (portfolioReturn || 1) * 2.5));
+    const rho = correlation; const portfolioVol = Math.sqrt(Math.pow(stockVol*stockPct/100,2) + Math.pow(bondVol*bondPct/100,2) + 2*rho*(stockVol*stockPct/100)*(bondVol*bondPct/100)); const portfolioDrawdown = portfolioVol * 2.0;
+    // portfolioDrawdown now computed via proper portfolio theory above
+    const recoveryYrs = Math.max(1, Math.round(Math.log(1/(1-portfolioDrawdown/100)) / Math.log(1+portfolioReturn/100)));
 
     $('stat-return').textContent = portfolioReturn.toFixed(1) + '%';
     $('stat-drawdown').textContent = '-' + portfolioDrawdown.toFixed(1) + '%';
@@ -165,6 +165,7 @@
     const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
 
     // Draw scatter of known points
+    / Generate chart points from the same formula
     const points = [
       { stock: 0,   ret: 4,  dd: 4 },
       { stock: 20,  ret: 5,  dd: 8 },

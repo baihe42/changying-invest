@@ -202,10 +202,11 @@
     const stockR = 9, bondR = 4, cashR = 1.5;
     const portfolioReturn = (stockR*s + bondR*b + cashR*c) / 100;
     const stockVol = 18, bondVol = 4, cashVol = 0.5;
+    const rho = 0.15; // stock-bond correlation
     const portfolioVol = Math.sqrt(
-      Math.pow(stockVol*s/100,2) + Math.pow(bondVol*b/100,2) + Math.pow(cashVol*c/100,2)
+      Math.pow(stockVol*s/100,2) + Math.pow(bondVol*b/100,2) + Math.pow(cashVol*c/100,2) + 2*rho*(stockVol*s/100)*(bondVol*b/100)
     );
-    const worstYear = portfolioReturn - 1.5 * portfolioVol;
+    const worstYear = portfolioReturn - 2.0 * portfolioVol; // ~95% confidence
 
     $('s-return').textContent = portfolioReturn.toFixed(1) + '%';
     $('s-vol').textContent = portfolioVol.toFixed(1) + '%';

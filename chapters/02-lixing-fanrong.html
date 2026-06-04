@@ -257,7 +257,26 @@
       if (lumpShares * prices[y] >= lumpAmount) { breakevenYr = y; break; }
     }
 
-    const dcaCagr = (Math.pow(dcaFinal / dcaInvested, 1/yrs) - 1) * 100;
+    // 定投IRR（内部回报率）：考虑资金分批投入的时间价值
+    // 现金流：第0年投入lumpAmount+第一年定投，第1~yrs-1年每年投入yearlyContribution，第yrs年收回dcaFinal
+    const yearlyContribution = monthlyDca * 12;
+    const cashFlows = [-(lumpAmount + yearlyContribution)];
+    for (let y = 1; y < yrs; y++) cashFlows.push(-yearlyContribution);
+    cashFlows.push(dcaFinal);
+    // Newton法求解 IRR
+    let irr = 0.05; // 初始猜测5%
+    for (let iter = 0; iter < 50; iter++) {
+      let npv = 0, dnpv = 0;
+      for (let t = 0; t < cashFlows.length; t++) {
+        npv += cashFlows[t] / Math.pow(1 + irr, t);
+        if (t > 0) dnpv += -t * cashFlows[t] / Math.pow(1 + irr, t + 1);
+      }
+      if (Math.abs(npv) < 0.01) break;
+      const step = npv / (dnpv || 1);
+      irr -= step;
+      if (Math.abs(step) < 0.0001) break;
+    }
+    const dcaCagr = irr * 100;
     const lumpCagr = (Math.pow(lumpFinal / lumpAmount, 1/yrs) - 1) * 100;
 
     return { prices, yrs, lumpFinal, dcaFinal, dcaInvested, breakevenYr, dcaCagr, lumpCagr };

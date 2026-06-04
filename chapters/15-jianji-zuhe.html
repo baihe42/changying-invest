@@ -155,7 +155,7 @@
       2 * 0.3 * (A_VOL*a/100) * (B_VOL*b/100)
     );
     const pDd = pVol * 1.5;
-    const pFee = (0.0015*a + 0.006*b + 0.002*c) / 100 * 100;
+    const pFee = (0.0015*a + 0.006*b + 0.002*c);
 
     $('s-ret').textContent = pRet.toFixed(1) + '%';
     $('s-dd').textContent = '-' + pDd.toFixed(1) + '%';
