@@ -77,8 +77,8 @@
   <p class="sim-desc">选一个"在最高点买入"的年份，看看你需要多少年才能回本——以及如果坚持定投会怎样。</p>
 
   <div class="year-picker" id="year-picker">
-    <button class="active" data-year="2000" data-peak="2245" data-label="2000年 上证2245">2000 上证高点</button>
-    <button data-year="2007" data-peak="6124" data-label="2007年 上证6124">2007 上证6124</button>
+    <button data-year="2000" data-peak="2245" data-label="2000年 上证2245">2000 上证高点</button>
+    <button class="active" data-year="2007" data-peak="6124" data-label="2007年 上证6124">2007 上证6124</button>
     <button data-year="2015" data-peak="5178" data-label="2015年 上证5178">2015 上证5178</button>
     <button data-year="2021" data-peak="3731" data-label="2021年 沪深300高点">2021 沪深300</button>
   </div>
@@ -129,149 +129,244 @@
   const ctx = canvas.getContext('2d');
 
   // Historical recovery scenarios (approximate, illustrative)
+  // Each scenario defines a deterministic price path: crash → recovery → normal
   const SCENARIOS = {
     '2000': {
-      peak: 2245, recoveryYrs: 6, // back to ~2245 by 2006
-      annualReturn: 5.5, // rough avg after peak
-      dcaCagr: 8.2,
-      label: '2000年 上证2245'
+      // 2000年上证2245高点买入，2006年回本
+      // 模拟路径：前6年低迷，之后恢复正常
+      years: 20,
+      pricePath: function() {
+        const prices = [];
+        for (let y = 0; y <= this.years; y++) {
+          if (y <= 1) prices.push(2245 - 2245 * 0.3 * y); // 跌30%
+          else if (y <= 6) prices.push(prices[prices.length-1] * 1.08); // 恢复期涨8%/年
+          else prices.push(prices[prices.length-1] * 1.07); // 正常期涨7%/年
+        }
+        return prices;
+      }
     },
     '2007': {
-      peak: 6124, recoveryYrs: 17, // still not back fully
-      annualReturn: -0.5,
-      dcaCagr: 5.6,
-      label: '2007年 上证6124'
+      // 2007年上证6124高点买入，至今未完全回本
+      // 真实路径：暴跌→反弹→震荡→缓慢恢复
+      years: 19,
+      pricePath: function() {
+        // 基于真实上证指数近似值
+        const keyPoints = [
+          { yr: 0, price: 6124 },   // 2007.10 高点
+          { yr: 1, price: 1664 },   // 2008.10 暴跌73%
+          { yr: 2, price: 3478 },   // 2009.08 反弹
+          { yr: 5, price: 1949 },   // 2012.12 二次探底
+          { yr: 7, price: 5178 },   // 2015.06 牛市高点
+          { yr: 11, price: 2440 },  // 2019.01 再次探底
+          { yr: 14, price: 3731 },  // 2021.02 高点
+          { yr: 19, price: 3300 },  // 2026 当前
+        ];
+        // 在关键点之间线性插值
+        const prices = [];
+        for (let y = 0; y <= this.years; y++) {
+          let lo = keyPoints[0], hi = keyPoints[keyPoints.length-1];
+          for (let i = 0; i < keyPoints.length-1; i++) {
+            if (y >= keyPoints[i].yr && y <= keyPoints[i+1].yr) {
+              lo = keyPoints[i]; hi = keyPoints[i+1]; break;
+            }
+          }
+          const t = (y - lo.yr) / (hi.yr - lo.yr || 1);
+          prices.push(lo.price + (hi.price - lo.price) * t);
+        }
+        return prices;
+      }
     },
     '2015': {
-      peak: 5178, recoveryYrs: 5,
-      annualReturn: 2.1,
-      dcaCagr: 6.8,
-      label: '2015年 上证5178'
+      // 2015年上证5178高点买入，约2020年回本
+      years: 11,
+      pricePath: function() {
+        const keyPoints = [
+          { yr: 0, price: 5178 },   // 2015.06
+          { yr: 1, price: 2638 },   // 2016.01 暴跌
+          { yr: 3, price: 3587 },   // 2018.01
+          { yr: 4, price: 2440 },   // 2019.01 二次探底
+          { yr: 6, price: 3731 },   // 2021.02
+          { yr: 11, price: 3300 },  // 2026
+        ];
+        const prices = [];
+        for (let y = 0; y <= this.years; y++) {
+          let lo = keyPoints[0], hi = keyPoints[keyPoints.length-1];
+          for (let i = 0; i < keyPoints.length-1; i++) {
+            if (y >= keyPoints[i].yr && y <= keyPoints[i+1].yr) {
+              lo = keyPoints[i]; hi = keyPoints[i+1]; break;
+            }
+          }
+          const t = (y - lo.yr) / (hi.yr - lo.yr || 1);
+          prices.push(lo.price + (hi.price - lo.price) * t);
+        }
+        return prices;
+      }
     },
     '2021': {
-      peak: 3731, recoveryYrs: 3,
-      annualReturn: 1.8,
-      dcaCagr: 7.5,
-      label: '2021年 沪深300'
+      // 2021年沪深300高点买入，已基本回本
+      years: 5,
+      pricePath: function() {
+        const keyPoints = [
+          { yr: 0, price: 5930 },   // 2021.02 沪深300高点
+          { yr: 2, price: 3108 },   // 2024.02 低点
+          { yr: 5, price: 3900 },   // 2026 当前
+        ];
+        const prices = [];
+        for (let y = 0; y <= this.years; y++) {
+          let lo = keyPoints[0], hi = keyPoints[keyPoints.length-1];
+          for (let i = 0; i < keyPoints.length-1; i++) {
+            if (y >= keyPoints[i].yr && y <= keyPoints[i+1].yr) {
+              lo = keyPoints[i]; hi = keyPoints[i+1]; break;
+            }
+          }
+          const t = (y - lo.yr) / (hi.yr - lo.yr || 1);
+          prices.push(lo.price + (hi.price - lo.price) * t);
+        }
+        return prices;
+      }
     }
   };
 
-  let current = '2000';
-  const initialLump = 100000;
-  const monthlyDca = 2000;
+  let current = '2007'; // 默认2007年，最震撼的例子
+  const lumpAmount = 100000;    // 一次性买入10万
+  const monthlyDca = 2000;     // 每月定投2000
 
   function fmt(n) { return '¥' + (n/10000).toFixed(1) + ' 万'; }
 
-  function drawChart(scenario) {
+  function simulate(scenario) {
+    const prices = scenario.pricePath();
+    const yrs = prices.length - 1;
+
+    // 一次性买入
+    const lumpShares = lumpAmount / prices[0];
+    const lumpFinal = lumpShares * prices[yrs];
+
+    // 定投
+    let dcaShares = lumpAmount / prices[0];
+    let dcaInvested = lumpAmount;
+    for (let y = 0; y < yrs; y++) {
+      const yearlyContribution = monthlyDca * 12;
+      dcaShares += yearlyContribution / prices[y];
+      dcaInvested += yearlyContribution;
+    }
+    const dcaFinal = dcaShares * prices[yrs];
+
+    // 回本年份
+    let breakevenYr = -1;
+    for (let y = 0; y <= yrs; y++) {
+      if (lumpShares * prices[y] >= lumpAmount) { breakevenYr = y; break; }
+    }
+
+    const dcaCagr = (Math.pow(dcaFinal / dcaInvested, 1/yrs) - 1) * 100;
+    const lumpCagr = (Math.pow(lumpFinal / lumpAmount, 1/yrs) - 1) * 100;
+
+    return { prices, yrs, lumpFinal, dcaFinal, dcaInvested, breakevenYr, dcaCagr, lumpCagr };
+  }
+
+  function drawChart(scenario, result) {
     const dpr = window.devicePixelRatio || 1;
-    const w = canvas.clientWidth;
-    const h = 300;
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
+    const w = canvas.clientWidth, h = 300;
+    canvas.width = w * dpr; canvas.height = h * dpr;
     canvas.style.height = h + 'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
     ctx.clearRect(0,0,w,h);
 
-    const pad = { top:30, right:40, bottom:50, left:75 };
-    const pw = w - pad.left - pad.right;
-    const ph = h - pad.top - pad.bottom;
-    const yrs = 20;
+    const pad = { top:30, right:40, bottom:50, left:70 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+    const { prices, yrs, lumpFinal, dcaFinal, dcaInvested, breakevenYr } = result;
 
-    // Generate data
+    // 资产数据点
     const lumpData = [], dcaData = [];
-    let lumpVal = initialLump, dcaVal = 0, dcaInvested = 0;
+    const lumpShares = lumpAmount / prices[0];
+    let dcaShares = lumpAmount / prices[0];
     for (let y = 0; y <= yrs; y++) {
-      if (y % 2 === 0 || y === yrs) lumpData.push({ year: y, val: lumpVal });
-      if (y % 2 === 0 || y === yrs) dcaData.push({ year: y, val: dcaVal });
-      if (y < yrs) {
-        // Simulate volatile recovery
-        const annualR = scenario.annualReturn + (y < scenario.recoveryYrs ? -2 : 4) + (Math.random()-0.5)*6;
-        lumpVal = lumpVal * (1 + annualR/100);
-        dcaInvested += monthlyDca * 12;
-        const monthlyR = annualR / 1200;
-        dcaVal = dcaVal * (1 + annualR/100) + monthlyDca * 12 * (1 + annualR/200);
+      if (y % Math.max(1, Math.floor(yrs/12)) === 0 || y === yrs) {
+        lumpData.push({ year: y, val: lumpShares * prices[y] });
+        dcaData.push({ year: y, val: dcaShares * prices[y] });
       }
+      if (y < yrs) dcaShares += (monthlyDca * 12) / prices[y];
     }
 
     const allVals = lumpData.concat(dcaData).map(d => d.val);
-    const maxVal = Math.max(...allVals);
-    const minVal = Math.min(...allVals, initialLump * 0.5);
-    const yRange = maxVal - minVal || 1;
+    const maxAsset = Math.max(...allVals), minAsset = Math.min(...allVals, lumpAmount * 0.2);
+    const aRange = maxAsset - minAsset || 1;
+    function xPos(y) { return pad.left + (y/yrs)*pw; }
+    function yPos(v) { return pad.top + ph - ((v-minAsset)/aRange)*ph; }
 
-    function xPos(year) { return pad.left + (year/yrs)*pw; }
-    function yPos(val) { return pad.top + ph - ((val-minVal)/yRange)*ph; }
+    // 价格背景（虚影）
+    const maxP = Math.max(...prices), minP = Math.min(...prices), pR = maxP - minP || 1;
+    ctx.fillStyle = 'rgba(139,126,116,0.06)';
+    ctx.beginPath(); ctx.moveTo(pad.left, pad.top+ph);
+    for (let y = 0; y <= yrs; y++) ctx.lineTo(xPos(y), pad.top + ((maxP-prices[y])/pR)*ph*0.35 + ph*0.65);
+    ctx.lineTo(xPos(yrs), pad.top+ph); ctx.closePath(); ctx.fill();
 
-    // Grid
-    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
-    for (let i = 0; i <= 5; i++) {
-      const y = pad.top + (i/5)*ph;
+    // 网格
+    ctx.strokeStyle = '#e8dccf'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.top + (i/4)*ph;
       ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
-      const val = minVal + yRange*(5-i)/5;
-      ctx.fillStyle = '#8899aa'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
-      ctx.fillText(fmt(val), pad.left-8, y+4);
+      ctx.fillStyle = '#8b7e74'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(fmt(minAsset + aRange*(4-i)/4), pad.left-6, y+4);
     }
-    ctx.fillStyle = '#8899aa'; ctx.textAlign = 'center';
-    for (let y = 0; y <= yrs; y+=5) ctx.fillText(y+'年', xPos(y), pad.top+ph+18);
+    ctx.fillStyle = '#8b7e74'; ctx.textAlign = 'center';
+    const step = Math.max(2, Math.floor(yrs/8));
+    for (let y = 0; y <= yrs; y+=step) ctx.fillText(y+'年', xPos(y), pad.top+ph+16);
 
-    // Recovery zone highlight
-    ctx.fillStyle = 'rgba(233,69,96,0.05)';
-    ctx.fillRect(xPos(0), pad.top, xPos(scenario.recoveryYrs)-xPos(0), ph);
+    // 回本区域
+    ctx.fillStyle = 'rgba(217,67,78,0.05)';
+    const recoverX = breakevenYr > 0 ? xPos(breakevenYr) : xPos(yrs);
+    ctx.fillRect(xPos(0), pad.top, recoverX - xPos(0), ph);
 
-    // Lump sum line (red)
+    // 一次性买入线
     ctx.strokeStyle = '#d9434e'; ctx.lineWidth = 2.5;
     ctx.beginPath();
-    for (let i = 0; i < lumpData.length; i++) {
-      const px = xPos(lumpData[i].year), py = yPos(lumpData[i].val);
-      i === 0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
-    }
+    lumpData.forEach((pt, i) => { const px = xPos(pt.year), py = yPos(pt.val); i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); });
     ctx.stroke();
-    // End dot
-    const lLast = lumpData[lumpData.length-1];
+    const ll = lumpData[lumpData.length-1];
     ctx.fillStyle = '#d9434e';
-    ctx.beginPath(); ctx.arc(xPos(lLast.year), yPos(lLast.val), 5, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(xPos(ll.year), yPos(ll.val), 5, 0, Math.PI*2); ctx.fill();
 
-    // DCA line (green)
+    // 定投线
     ctx.strokeStyle = '#2e9e5f'; ctx.lineWidth = 2.5;
     ctx.beginPath();
-    for (let i = 0; i < dcaData.length; i++) {
-      const px = xPos(dcaData[i].year), py = yPos(dcaData[i].val);
-      i === 0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
-    }
+    dcaData.forEach((pt, i) => { const px = xPos(pt.year), py = yPos(pt.val); i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); });
     ctx.stroke();
-    const dLast = dcaData[dcaData.length-1];
+    const dl = dcaData[dcaData.length-1];
     ctx.fillStyle = '#2e9e5f';
-    ctx.beginPath(); ctx.arc(xPos(dLast.year), yPos(dLast.val), 5, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(xPos(dl.year), yPos(dl.val), 5, 0, Math.PI*2); ctx.fill();
 
-    // Break-even line
-    ctx.strokeStyle = '#8899aa'; ctx.lineWidth = 1; ctx.setLineDash([5,5]);
-    ctx.beginPath(); ctx.moveTo(pad.left, yPos(initialLump)); ctx.lineTo(w-pad.right, yPos(initialLump)); ctx.stroke();
+    // 本金线
+    const blY = yPos(lumpAmount);
+    ctx.strokeStyle = '#8b7e74'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(pad.left, blY); ctx.lineTo(w-pad.right, blY); ctx.stroke();
     ctx.setLineDash([]);
+    ctx.fillStyle = '#8b7e74'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('本金', pad.left+4, blY-4);
 
-    // Recovery marker
-    ctx.fillStyle = '#c7851a'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('← ' + scenario.recoveryYrs + '年回本', xPos(scenario.recoveryYrs), yPos(initialLump)-6);
+    // 回本标记
+    if (breakevenYr > 0) {
+      ctx.fillStyle = '#c7851a'; ctx.font = 'bold 12px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(breakevenYr + '年回本', xPos(breakevenYr), blY-10);
+    }
 
-    // Legend
-    const lx = w - pad.right - 170, ly = pad.top + 6;
-    ctx.fillStyle = '#d9434e'; ctx.fillRect(lx, ly, 14,14);
-    ctx.fillStyle = '#ccc'; ctx.font = '12px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
-    ctx.fillText('一次性买入', lx+20, ly+12);
-    ctx.fillStyle = '#2e9e5f'; ctx.fillRect(lx, ly+22, 14,14);
-    ctx.fillText('每月定投', lx+20, ly+34);
-
-    return { lumpFinal: lLast.val, dcaFinal: dLast.val };
+    // 图例
+    ctx.fillStyle = '#d9434e'; ctx.fillRect(w-172, pad.top+6, 12,12);
+    ctx.fillStyle = '#2d2d2d'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('一次性买入', w-156, pad.top+16);
+    ctx.fillStyle = '#2e9e5f'; ctx.fillRect(w-172, pad.top+24, 12,12);
+    ctx.fillText('每月定投 ¥' + monthlyDca.toLocaleString(), w-156, pad.top+34);
   }
 
   function update() {
     const sc = SCENARIOS[current];
-    const { lumpFinal, dcaFinal } = drawChart(sc);
-    const dcaInvested = initialLump + monthlyDca * 12 * 20;
-    const dcaCagr = ((Math.pow(dcaFinal / dcaInvested, 1/20) - 1) * 100);
+    const result = simulate(sc);
 
-    $('lump-result').textContent = fmt(lumpFinal);
-    $('dca-result').textContent = fmt(dcaFinal);
-    $('breakeven-yrs').textContent = sc.recoveryYrs;
-    $('dca-cagr').textContent = dcaCagr.toFixed(1);
+    $('lump-result').textContent = fmt(result.lumpFinal);
+    $('dca-result').textContent = fmt(result.dcaFinal);
+    $('breakeven-yrs').textContent = result.breakevenYr > 0 ? result.breakevenYr : '至今未';
+    $('dca-cagr').textContent = result.dcaCagr.toFixed(1);
+
+    drawChart(sc, result);
   }
 
   $('year-picker').addEventListener('click', e => {
