@@ -197,9 +197,9 @@
 
   function reset() {
     round = 1;
-    prevChampion = -1;
     consecutiveTop5 = {};
     rankings = shuffle();
+    prevChampion = rankings[0]; // 初始排名第一即为首轮冠军
     $('round-num').textContent = '1';
     $('continuous-insight').classList.remove('show');
     renderDots();
