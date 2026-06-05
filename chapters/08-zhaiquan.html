@@ -164,8 +164,7 @@
     const pad = { top:30, right:40, bottom:50, left:75 };
     const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
 
-    // Draw scatter of known points
-    / Generate chart points from the same formula
+    // 根据公式动态生成散点（与上方数值一致）
     const points = [
       { stock: 0,   ret: 4,  dd: 4 },
       { stock: 20,  ret: 5,  dd: 8 },
@@ -182,17 +181,17 @@
     function yPos(ret) { return pad.top + ph - ((ret - minRet) / (maxRet - minRet)) * ph; }
 
     // Grid
-    ctx.strokeStyle = '#1f3050'; ctx.lineWidth = 0.5;
+    ctx.strokeStyle = '#e8dccf'; ctx.lineWidth = 0.5;
     for (let i = 0; i <= 5; i++) {
       const x = pad.left + (i/5)*pw, y = pad.top + (i/5)*ph;
       ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(w-pad.right,y); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(x,pad.top); ctx.lineTo(x,pad.top+ph); ctx.stroke();
-      ctx.fillStyle = '#8899aa'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillStyle = '#8b7e74'; ctx.font = '10px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'right';
       ctx.fillText((minRet + (maxRet-minRet)*(5-i)/5).toFixed(0)+'%', pad.left-6, y+4);
       ctx.textAlign = 'center';
       ctx.fillText('-' + (minDd + (maxDd-minDd)*i/5).toFixed(0)+'%', x, pad.top+ph+16);
     }
-    ctx.fillStyle = '#8899aa'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.fillStyle = '#8b7e74'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
     ctx.fillText('最大回撤 →', w - pad.right - 40, pad.top+ph+28);
     ctx.save(); ctx.translate(pad.left-50, pad.top+ph/2); ctx.rotate(-Math.PI/2);
     ctx.fillText('预期年化回报 →', 0, 0); ctx.restore();
@@ -208,7 +207,7 @@
 
     // Draw points
     points.forEach(pt => {
-      ctx.fillStyle = pt.stock === stockPct ? '#c7851a' : '#3a5070';
+      ctx.fillStyle = pt.stock === stockPct ? '#c7851a' : '#8b7e74';
       ctx.beginPath();
       ctx.arc(xPos(pt.dd), yPos(pt.ret), pt.stock === stockPct ? 8 : 5, 0, Math.PI*2);
       ctx.fill();
@@ -219,7 +218,7 @@
     });
 
     // Labels for key points
-    ctx.fillStyle = '#ccc'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
+    ctx.fillStyle = '#666'; ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.textAlign = 'left';
     points.forEach(pt => {
       if (pt.stock % 20 === 0) {
         ctx.fillText(pt.stock + '%股', xPos(pt.dd) + 10, yPos(pt.ret) - 4);
